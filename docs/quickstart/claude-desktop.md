@@ -20,7 +20,7 @@ In zwei Minuten gibt **Claude Desktop** verifizierte, zitierfähige Antworten zu
 
 - **[Claude Desktop](https://claude.ai/download)** installiert (macOS / Windows / Linux)
 - Lawbster-Account → [14 Tage kostenlos](https://lawbster.planitprima.com/pricing) (keine Kreditkarte)
-- Ein **API-Key** (`sk-legal-…`) aus dem Portal unter **[Keys](https://lawbster.planitprima.com/keys)**
+- Ein **API-Key** (`sk-legal-…`) aus dem Portal unter **[Keys](https://lawbster.planitprima.com/)**
 
 !!! tip "Klartext-Token nur einmal sichtbar"
     Sobald der Key erstellt ist, erscheint der Klartext **genau einmal**. Direkt in die Config kopieren — sonst neu erzeugen.

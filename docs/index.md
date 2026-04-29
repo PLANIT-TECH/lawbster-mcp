@@ -159,7 +159,7 @@ Plus statische [Resources](resources.md) (`legal://rechtsrahmen`, `legal://filte
 ## Vertrauen & Compliance
 
 - **DSGVO-konform**, AVV nach Art. 28 inklusive, Hosting bei Hetzner Online GmbH (Deutschland).
-- **Keine automatisierte Entscheidungsfindung** über Betroffene (Art. 22 DSGVO).
+- **Keine Verarbeitung personenbezogener Daten** im Regelbetrieb — der Index enthält nur öffentliche Rechtstexte, Tool-Call-Inhalte werden nicht persistiert.
 - **API-Keys SHA-256-gehasht** in der Datenbank, Klartext nur einmal sichtbar.
 - **Stripe** (Zahlungsabwicklung) unter EU-US Data Privacy Framework.
 - **Transparente Benchmarks** auf [GerLeRB](benchmarks.md), öffentlich nachvollziehbar.

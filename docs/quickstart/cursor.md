@@ -17,7 +17,7 @@ keywords:
 ## Voraussetzungen
 
 - **[Cursor](https://cursor.sh)** ≥ 0.42 (Pro / Business für MCP)
-- API-Key (`sk-legal-…`) aus dem [Lawbster-Portal](https://lawbster.planitprima.com/keys)
+- API-Key (`sk-legal-…`) aus dem [Lawbster-Portal](https://lawbster.planitprima.com/)
 
 ## Setup
 
@@ -79,7 +79,7 @@ Globale Config ist für einzelne Entwickler praktisch — projekt-lokale Config 
     Cursor neu laden, im Composer das **MCP**-Icon prüfen. Falls Lawbster fehlt: JSON-Syntax mit `python -m json.tool < .cursor/mcp.json`.
 
 ??? question "401 Unauthorized"
-    Token-Prefix `sk-legal-` korrekt? Im [Portal](https://lawbster.planitprima.com/keys) prüfen, ob der Key aktiv ist.
+    Token-Prefix `sk-legal-` korrekt? Im [Portal](https://lawbster.planitprima.com/) prüfen, ob der Key aktiv ist.
 
 ---
 

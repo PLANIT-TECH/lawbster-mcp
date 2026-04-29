@@ -29,9 +29,9 @@ Lawbster ist als **produktionsreifer** B2B-Dienst gebaut — Compliance ist kein
 
 ## Datenschutz im Detail
 
-- **Keine automatisierte Entscheidungsfindung** über Betroffene im Sinne von Art. 22 DSGVO. Lawbster trifft keine rechtsverbindlichen Entscheidungen — wir liefern Information.
-- **Logs werden nach 30 Tagen anonymisiert.** Query-Klartexte werden gelöscht; nur ein SHA-256-Hash bleibt für Telemetrie und Quota-Zählung. Siehe [Datenschutz](https://lawbster.planitprima.com/datenschutz).
-- **Keine Übermittlung der Anfragen an LLM-Anbieter durch Lawbster.** Wenn ein Kunde ChatGPT nutzt, gehen die Anfragen direkt an OpenAI — Lawbster bekommt nur die Tool-Call-Argumente, keinen User-Prompt-Klartext.
+- **Lawbster verarbeitet keine personenbezogenen Daten** als typischen Leistungsgegenstand. Der Index enthält ausschließlich öffentliche Rechtstexte (Gesetze, EU-Recht, Bundesgerichtsurteile). Tool-Call-Inhalte werden nicht persistiert.
+- **Telemetrie nur als Metadaten.** Pro Anfrage werden lediglich Zeitpunkt, Tool-Name, Latenz, Status und ein Hash zur Quota-Zählung 30 Tage vorgehalten und danach gelöscht. Der Anfrage-Inhalt selbst (Tool-Call-Argumente) wird nicht gespeichert. Siehe [Datenschutz](https://lawbster.planitprima.com/datenschutz).
+- **Keine Übermittlung der Anfragen an LLM-Anbieter durch Lawbster.** Wenn ein Kunde ChatGPT nutzt, gehen die Anfragen direkt an OpenAI — Lawbster bekommt nur die Tool-Call-Argumente, keinen Prompt-Klartext.
 - **Inhalte des Lawbster-Index sind öffentlich** (Gesetze, EU-Recht, Bundesgerichts­urteile) — keine personenbezogenen Daten in der gelieferten Antwort.
 
 ## Authentifizierung
@@ -62,8 +62,8 @@ Stripe erhält **nur Abrechnungsdaten** (Name, E-Mail, Rechnungsanschrift, USt-I
 ## Telemetrie
 
 - **Stripe Webhooks** signiert verifiziert.
-- **Strukturierte Logs** lokal, keine PII an externe Logging-Dienste.
-- Optional aktivierbares Error-Tracking ohne PII.
+- **Strukturierte Logs** ausschließlich lokal — Tool-Call-Inhalte werden nicht protokolliert, an externe Logging-Dienste gehen keinerlei Daten.
+- Optional aktivierbares Error-Tracking — beschränkt auf technische Fehlermeldungen ohne Anfrage-Inhalte.
 
 ## Datenresidenz und Backup
 

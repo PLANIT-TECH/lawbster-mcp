@@ -17,7 +17,7 @@ keywords:
 ## Prerequisites
 
 - **[Cursor](https://cursor.sh)** ≥ 0.42 (Pro / Business for MCP)
-- An API key (`sk-legal-…`) from the [Lawbster portal](https://lawbster.planitprima.com/keys)
+- An API key (`sk-legal-…`) from the [Lawbster portal](https://lawbster.planitprima.com/)
 
 ## Setup
 
@@ -79,7 +79,7 @@ Global config is convenient for solo devs — project-local is better for teams 
     Reload Cursor, check the **MCP** icon in the Composer. If Lawbster is missing: validate JSON with `python -m json.tool < .cursor/mcp.json`.
 
 ??? question "401 Unauthorized"
-    Token prefix `sk-legal-` correct? Check in the [portal](https://lawbster.planitprima.com/keys) whether the key is still active.
+    Token prefix `sk-legal-` correct? Check in the [portal](https://lawbster.planitprima.com/) whether the key is still active.
 
 ---
 

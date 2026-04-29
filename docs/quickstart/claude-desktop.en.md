@@ -20,7 +20,7 @@ In two minutes, **Claude Desktop** answers questions about German and European l
 
 - **[Claude Desktop](https://claude.ai/download)** installed (macOS / Windows / Linux)
 - A Lawbster account → [14 days free](https://lawbster.planitprima.com/pricing) (no credit card)
-- An **API key** (`sk-legal-…`) from the portal under **[Keys](https://lawbster.planitprima.com/keys)**
+- An **API key** (`sk-legal-…`) from the portal under **[Keys](https://lawbster.planitprima.com/)**
 
 !!! tip "Plain-text token shown only once"
     When you create the key, the plain text appears **exactly once**. Copy it straight into the config — otherwise rotate.

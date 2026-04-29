@@ -104,7 +104,7 @@ OAuth-Flow, kein Code: **Settings → Connectors → Add custom** → URL `https
 
 - **Hosting in Deutschland.** Alle Daten ausschließlich auf Hetzner-Servern in Deutschland verarbeitet und gespeichert.
 - **DSGVO-konform.** Auftragsverarbeitungsvertrag (AVV) nach Art. 28 DSGVO inklusive.
-- **Keine automatisierte Entscheidungsfindung** über Betroffene (Art. 22 DSGVO).
+- **Keine Verarbeitung personenbezogener Daten** im Regelbetrieb — der Index enthält nur öffentliche Rechtstexte, Tool-Call-Inhalte werden nicht persistiert.
 - **Stripe für Zahlungsabwicklung** unter EU-US Data Privacy Framework (Art. 45 DSGVO).
 - **API-Keys SHA-256-gehasht** in der Datenbank, Klartext nur einmal sichtbar.
 - **Dual-Auth:** API-Key (`sk-legal-…`) für Server-to-Server, OAuth 2.1 mit JWT für Web-Clients.

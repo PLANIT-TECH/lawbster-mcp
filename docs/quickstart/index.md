@@ -22,7 +22,7 @@ Lawbster spricht das **Model Context Protocol (MCP)** über **Streamable HTTP**.
 | **API-Key** | Server-to-Server, Skripte, eigene Apps, Cursor, Claude Desktop | `sk-legal-…` |
 | **OAuth 2.1** | Browser-Clients (ChatGPT, Claude.ai), kein Klartext-Token nötig | JWT, automatisch |
 
-Der API-Key wird im Lawbster-Portal unter **[Keys](https://lawbster.planitprima.com/keys)** angelegt. Klartext erscheint **nur einmal** — direkt in den Client-Config kopieren.
+Der API-Key wird im Lawbster-Portal unter **[Keys](https://lawbster.planitprima.com/)** angelegt. Klartext erscheint **nur einmal** — direkt in den Client-Config kopieren.
 
 ## MCP-Endpoint
 

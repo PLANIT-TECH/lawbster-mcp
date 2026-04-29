@@ -76,7 +76,7 @@ keywords:
 ## Compliance & Sicherheit
 
 ??? question "Ist Lawbster DSGVO-konform?"
-    Ja. Auftragsverarbeitungsvertrag nach Art. 28 DSGVO inklusive, Hosting ausschließlich in Deutschland, keine automatisierte Entscheidungsfindung über Betroffene (Art. 22 DSGVO).
+    Ja. Hosting ausschließlich in Deutschland, Auftragsverarbeitungsvertrag (EU-Standardvertragsklauseln nach Art. 28 DSGVO) als Vertragsbestandteil — er greift, falls im Einzelfall personenbezogene Daten verarbeitet werden. Im Regelbetrieb fließen keine personenbezogenen Daten zu Lawbster.
 
     → [Vollständige Compliance-Übersicht](compliance.md)
 
@@ -84,7 +84,7 @@ keywords:
     Ausschließlich auf Servern in Deutschland (Hetzner). Backups verlassen die EU nicht. Einzige Drittland-Komponente: Stripe für Zahlungsabwicklung — unter dem EU-US Data Privacy Framework (Art. 45 DSGVO).
 
 ??? question "Werden meine Anfragen gespeichert?"
-    Logs werden nach 30 Tagen anonymisiert. Query-Klartexte werden gelöscht, nur ein Hash bleibt für Telemetrie und Quota. Inhalte des Lawbster-Index sind öffentlich (Gesetze, Urteile) — keine personenbezogenen Daten in der Antwort.
+    Nein. Tool-Call-Inhalte werden nicht persistiert. Pro Anfrage werden lediglich Telemetrie-Metadaten (Zeitpunkt, Tool-Name, Latenz, Status, Quota-Hash) für 30 Tage vorgehalten und danach gelöscht. Inhalte des Lawbster-Index sind öffentlich (Gesetze, Urteile) — keine personenbezogenen Daten in der Antwort.
 
 ??? question "Kann ich Lawbster on-premise betreiben?"
     Aktuell nicht im Standardangebot. On-Premise- und Single-Tenant-Deployments sind für Enterprise-Kunden möglich — Kontakt: `support@planitprima.com`.

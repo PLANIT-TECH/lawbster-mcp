@@ -32,7 +32,7 @@ keywords:
 1. **Tools** → **New tool** → **Model Context Protocol**
 2. **Server URL:** `https://lawbster.planitprima.com/mcp`
 3. **Authentication:** *Bearer*
-4. **Token:** `sk-legal-…` (aus dem [Lawbster-Portal](https://lawbster.planitprima.com/keys))
+4. **Token:** `sk-legal-…` (aus dem [Lawbster-Portal](https://lawbster.planitprima.com/))
 
 ## Resources nutzen
 
