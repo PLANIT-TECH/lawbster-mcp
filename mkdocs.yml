@@ -1,0 +1,237 @@
+# =============================================================================
+# Lawbster MCP — Public Documentation
+# =============================================================================
+# Static-site config for GitHub Pages.
+# Theme: Material for MkDocs (https://squidfunk.github.io/mkdocs-material/)
+# i18n:  mkdocs-static-i18n (DE default, EN secondary)
+#
+# Canonical URL is the only knob to flip when moving to a custom domain
+# (e.g. docs.lawbster.legal). All other links stay relative.
+# =============================================================================
+
+site_name: Lawbster MCP — German & EU Law for AI
+site_description: >-
+  Production-grade MCP server for German and EU law. Verified, citable
+  legal context for Claude, ChatGPT, Copilot and any LLM that speaks the
+  Model Context Protocol. ~11 000 laws, daily updates, hosted in Germany.
+site_author: PLANIT // TECH GmbH
+site_url: https://planit-tech.github.io/lawbster-mcp/
+
+repo_name: PLANIT-TECH/lawbster-mcp
+repo_url: https://github.com/PLANIT-TECH/lawbster-mcp
+edit_uri: edit/main/docs/
+
+copyright: >-
+  Copyright &copy; 2026 PLANIT // TECH GmbH ·
+  <a href="https://lawbster.planitprima.com/impressum">Impressum</a> ·
+  <a href="https://lawbster.planitprima.com/datenschutz">Datenschutz</a> ·
+  <a href="https://lawbster.planitprima.com/agb">AGB</a>
+
+# -----------------------------------------------------------------------------
+# Theme
+# -----------------------------------------------------------------------------
+theme:
+  name: material
+  custom_dir: overrides
+  language: de
+  logo: assets/lawbster-mark.svg
+  favicon: assets/favicon.png
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: Dunkles Theme aktivieren
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: Helles Theme aktivieren
+  features:
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.action.edit
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - announce.dismiss
+
+# -----------------------------------------------------------------------------
+# Extra metadata — injected into every page (OG, Twitter, schema.org)
+# -----------------------------------------------------------------------------
+extra:
+  homepage: https://lawbster.planitprima.com
+  generator: false
+  social:
+    - icon: fontawesome/solid/globe
+      link: https://lawbster.planitprima.com
+      name: Lawbster Website
+    - icon: fontawesome/brands/github
+      link: https://github.com/PLANIT-TECH/lawbster-mcp
+      name: Lawbster MCP on GitHub
+    - icon: fontawesome/solid/envelope
+      link: mailto:support@planitprima.com
+      name: support@planitprima.com
+  alternate:
+    - name: Deutsch
+      link: /lawbster-mcp/
+      lang: de
+    - name: English
+      link: /lawbster-mcp/en/
+      lang: en
+  consent:
+    title: Cookie-Hinweis
+    description: >-
+      Diese Doku-Seite nutzt keine Tracking-Cookies. Die GitHub-Pages-Plattform
+      kann technische Cookies setzen.
+
+# -----------------------------------------------------------------------------
+# Plugins
+# -----------------------------------------------------------------------------
+plugins:
+  - search:
+      lang:
+        - de
+        - en
+      separator: '[\s​\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: de
+          default: true
+          name: Deutsch
+          build: true
+          site_name: Lawbster MCP — Deutsches & EU-Recht für KI
+          site_description: >-
+            Produktionsreifer MCP-Server für deutsches und europäisches Recht.
+            Verifizierter, zitierfähiger Rechtskontext für Claude, ChatGPT,
+            Copilot und jede KI mit Model Context Protocol. ~11 000 Gesetze,
+            tägliche Aktualisierung, Hosting in Deutschland.
+          nav_translations:
+            Home: Startseite
+            Quickstart: Einstieg
+            Tools: Tools
+            Resources: Resources
+            Prompts: Prompts
+            Data Sources: Datenquellen
+            Search Pipeline: Suchpipeline
+            Benchmarks: Benchmarks
+            Compliance: Compliance
+            Pricing: Preise
+            FAQ: FAQ
+            Changelog: Changelog
+        - locale: en
+          name: English
+          build: true
+          site_name: Lawbster MCP — German & EU Law for AI
+          site_description: >-
+            Production-grade MCP server for German and EU law. Verified,
+            citable legal context for Claude, ChatGPT, Copilot and any LLM
+            that speaks the Model Context Protocol. ~11 000 laws, daily
+            updates, hosted in Germany.
+  - tags
+  - meta
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: iso_date
+      fallback_to_build_date: true
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+
+# -----------------------------------------------------------------------------
+# Markdown extensions
+# -----------------------------------------------------------------------------
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: Permanenter Link auf diesen Abschnitt
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# -----------------------------------------------------------------------------
+# Navigation (translated via i18n nav_translations)
+# -----------------------------------------------------------------------------
+nav:
+  - Home: index.md
+  - Quickstart:
+      - quickstart/index.md
+      - Claude Desktop: quickstart/claude-desktop.md
+      - ChatGPT & Claude.ai: quickstart/chatgpt.md
+      - Cursor: quickstart/cursor.md
+      - Copilot Studio: quickstart/copilot-studio.md
+  - Tools:
+      - tools/index.md
+      - legal_search: tools/legal_search.md
+      - legal_lookup: tools/legal_lookup.md
+      - legal_get_context: tools/legal_get_context.md
+      - legal_find_citing_decisions: tools/legal_find_citing_decisions.md
+      - legal_list_laws: tools/legal_list_laws.md
+      - legal_get_toc: tools/legal_get_toc.md
+      - legal_get_stats: tools/legal_get_stats.md
+  - Resources: resources.md
+  - Prompts: prompts.md
+  - Data Sources: data-sources.md
+  - Search Pipeline: search-pipeline.md
+  - Benchmarks: benchmarks.md
+  - Compliance: compliance.md
+  - Pricing: pricing.md
+  - FAQ: faq.md
+  - Changelog: changelog.md

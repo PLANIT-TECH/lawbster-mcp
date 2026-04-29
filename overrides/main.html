@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{# ---------------------------------------------------------------------------
+   Lawbster MCP — Material theme override
+   - Injects schema.org JSON-LD on every page (Organization + WebSite +
+     SoftwareApplication on the homepage; WebPage / TechArticle elsewhere).
+   - Adds explicit <meta name="robots"> for AI crawlers (GPTBot, ClaudeBot,
+     PerplexityBot, CCBot, GoogleOther) — same allow signal as robots.txt.
+   - Adds canonical + hreflang via i18n plugin (already handled).
+   --------------------------------------------------------------------------- #}
+
+{% block extrahead %}
+  {{ super() }}
+
+  {# --- Open Graph / Twitter (page-level fallback) --- #}
+  <meta property="og:site_name" content="Lawbster MCP" />
+  <meta property="og:locale" content="{{ 'de_DE' if config.theme.language == 'de' else 'en_US' }}" />
+  {% if page and page.is_homepage %}
+    <meta property="og:type" content="website" />
+  {% else %}
+    <meta property="og:type" content="article" />
+  {% endif %}
+  <meta name="twitter:card" content="summary_large_image" />
+
+  {# --- AI-crawler explicit allow (same intent as robots.txt) --- #}
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="GPTBot" content="index, follow" />
+  <meta name="ClaudeBot" content="index, follow" />
+  <meta name="PerplexityBot" content="index, follow" />
+  <meta name="CCBot" content="index, follow" />
+
+  {# --- Schema.org: Organization + WebSite always present --- #}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://lawbster.planitprima.com/#organization",
+        "name": "PLANIT // TECH GmbH",
+        "alternateName": "PLANIT TECH",
+        "url": "https://lawbster.planitprima.com",
+        "logo": "https://lawbster.planitprima.com/favicon-192x192.png",
+        "sameAs": [
+          "https://www.planitprima.com",
+          "https://github.com/PLANIT-TECH"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "{{ config.site_url }}#website",
+        "url": "{{ config.site_url }}",
+        "name": "{{ config.site_name }}",
+        "description": "{{ config.site_description }}",
+        "inLanguage": "{{ config.theme.language }}",
+        "publisher": { "@id": "https://lawbster.planitprima.com/#organization" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "{{ config.site_url }}?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+      {%- if page and page.is_homepage -%}
+      ,
+      {
+        "@type": "SoftwareApplication",
+        "name": "Lawbster MCP",
+        "applicationCategory": "DeveloperApplication",
+        "applicationSubCategory": "LegalTech / RAG",
+        "operatingSystem": "Web (MCP / HTTP)",
+        "url": "https://lawbster.planitprima.com",
+        "downloadUrl": "https://lawbster.planitprima.com",
+        "publisher": { "@id": "https://lawbster.planitprima.com/#organization" },
+        "offers": {
+          "@type": "Offer",
+          "price": "19",
+          "priceCurrency": "EUR",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "19",
+            "priceCurrency": "EUR",
+            "unitText": "MONTH",
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": "1",
+              "unitText": "seat"
+            }
+          },
+          "availability": "https://schema.org/InStock"
+        },
+        "description": "Production-grade MCP server for German and EU law. Verified, citable legal context for Claude, ChatGPT, Copilot and any LLM that speaks the Model Context Protocol.",
+        "featureList": [
+          "Hybrid legal search with AI reranking",
+          "Single-norm lookup with verified full text",
+          "Surrounding-context retrieval",
+          "Cited-by lookup against federal court decisions",
+          "Daily updates from official sources",
+          "OAuth 2.1 + API-key auth",
+          "Per-seat quota & usage analytics",
+          "Hosting in Germany",
+          "GDPR / Art. 28 DPA"
+        ]
+      }
+      {%- endif -%}
+    ]
+  }
+  </script>
+{% endblock %}
