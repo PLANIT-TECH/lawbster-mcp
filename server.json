@@ -1,0 +1,26 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.PLANIT-TECH/lawbster",
+  "title": "Lawbster",
+  "description": "Verified, citable German and EU legal context for any LLM. German federal laws, EU regulations and directives, federal court decisions, and selected state laws — sourced from official publishers and updated daily. Hosted in Germany.",
+  "websiteUrl": "https://lawbster.planitprima.com",
+  "repository": {
+    "url": "https://github.com/PLANIT-TECH/lawbster-mcp",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://lawbster.planitprima.com/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer token in the form 'Bearer sk-legal-...'. Create an API key at https://lawbster.planitprima.com/",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
