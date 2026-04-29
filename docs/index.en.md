@@ -158,7 +158,7 @@ Plus static [resources](resources.md) (`legal://rechtsrahmen`, `legal://filter_v
 ## Trust & compliance
 
 - **GDPR-compliant**, Art. 28 DPA included, hosting at Hetzner Online GmbH (Germany).
-- **No automated decision-making** affecting data subjects (Art. 22 GDPR).
+- **No processing of personal data** in normal operation — the index contains only public legal texts, tool-call payloads are not persisted.
 - **API keys SHA-256-hashed** in the database, plain text shown only once.
 - **Stripe** (payment processing) under the EU-US Data Privacy Framework.
 - **Transparent benchmarks** on [GerLeRB](benchmarks.md), publicly reproducible.

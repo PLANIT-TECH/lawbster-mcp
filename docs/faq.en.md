@@ -76,7 +76,7 @@ keywords:
 ## Compliance & security
 
 ??? question "Is Lawbster GDPR-compliant?"
-    Yes. Art. 28 GDPR data processing agreement included, hosting exclusively in Germany, no automated decision-making affecting data subjects (Art. 22 GDPR).
+    Yes. Hosting exclusively in Germany, data processing agreement (EU standard contractual clauses under Art. 28 GDPR) is part of the contract — it applies in case personal data is processed. In normal operation, no personal data flows to Lawbster.
 
     → [Full compliance overview](compliance.md)
 
@@ -84,7 +84,7 @@ keywords:
     Exclusively on servers in Germany (Hetzner). Backups don't leave the EU. The only third-country component: Stripe for payment processing — under the EU-US Data Privacy Framework (Art. 45 GDPR).
 
 ??? question "Are my queries stored?"
-    Logs are anonymised after 30 days. Query plain text is deleted; only a hash remains for telemetry and quota. Lawbster's index content is public (statutes, decisions) — no personal data in the response.
+    No. Tool-call payloads are not persisted. Per request, only telemetry metadata (timestamp, tool name, latency, status, quota hash) is kept for 30 days, then deleted. Lawbster's index content is public (statutes, decisions) — no personal data in the response.
 
 ??? question "Can I run Lawbster on-premise?"
     Not in the standard plan today. On-premise and single-tenant deployments are possible for enterprise customers — contact: `support@planitprima.com`.

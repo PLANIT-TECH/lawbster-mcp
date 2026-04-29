@@ -29,8 +29,8 @@ Lawbster is built **production-grade** as a B2B service — compliance is not "l
 
 ## Privacy details
 
-- **No automated decision-making** affecting data subjects within the meaning of Art. 22 GDPR. Lawbster doesn't make legally binding decisions — we deliver information.
-- **Logs are anonymised after 30 days.** Query plain text is deleted; only a hash remains for telemetry and quota counting. See [privacy notice](https://lawbster.planitprima.com/datenschutz).
+- **Lawbster does not process personal data** as a typical part of the service. The index contains only public legal texts (statutes, EU law, federal court decisions). Tool-call payloads are not persisted.
+- **Telemetry as metadata only.** Per request, only timestamp, tool name, latency, status, and a quota-counting hash are kept for 30 days, then deleted. The request payload itself (tool-call arguments) is not stored. See [privacy notice](https://lawbster.planitprima.com/datenschutz).
 - **Lawbster does not forward queries to LLM providers.** When a customer uses ChatGPT, queries go directly to OpenAI — Lawbster only sees tool-call arguments, not the user prompt's plain text.
 - **Lawbster index content is public** (statutes, EU law, federal court decisions) — no personal data in the response.
 
@@ -62,8 +62,8 @@ Stripe receives **only billing data** (name, email, billing address, VAT ID; car
 ## Telemetry
 
 - **Stripe webhooks** verified with signature.
-- **Structured logs** local, no PII to external logging services.
-- Optional error tracking without PII.
+- **Structured logs** local only — tool-call payloads are not logged, no data is sent to external logging services.
+- Optional error tracking — limited to technical error messages, no request payloads.
 
 ## Data residency & backup
 
