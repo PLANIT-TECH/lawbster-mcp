@@ -42,7 +42,7 @@ Auf dem öffentlichen [GerLeRB-Benchmark](benchmarks.md) erreicht Lawbster **MRR
 
 ## Was nicht passieren darf
 
-**Halluzinationen.** Lawbster gibt **niemals** einen Treffer zurück, den es nicht im Index hat. Wenn keine passende Norm existiert, sagt das Tool das ehrlich — KI-Assistenten können dann den Anwender darüber informieren, statt etwas zu erfinden.
+**Halluzinationen.** Treffer kommen ausschließlich aus dem indexierten Bestand — Lawbster generiert keine Norm-Texte, sondern liefert die im Index vorhandenen Stellen. Wenn keine passende Norm gefunden wird, gibt das Tool das auch so zurück, statt etwas zu erfinden.
 
 **Veraltete Daten.** Lawbster aktualisiert sich täglich. Eine Gesetzesänderung von vorgestern ist heute im Index.
 

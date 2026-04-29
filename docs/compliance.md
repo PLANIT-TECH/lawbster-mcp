@@ -1,9 +1,9 @@
 ---
 title: Compliance & Sicherheit — DSGVO, Hosting in Deutschland, Auth
 description: >-
-  Lawbster ist DSGVO-konform, hostet ausschließlich in Deutschland (Hetzner),
-  bietet AVV nach Art. 28 DSGVO, hashed API-Keys mit SHA-256, und nutzt
-  Stripe unter dem EU-US Data Privacy Framework.
+  Technischer Überblick zu Lawbster: Hosting bei Hetzner in Deutschland,
+  AVV nach Art. 28 DSGVO, API-Key-Hashing mit SHA-256, Auth via API-Key
+  oder OAuth 2.1, Abrechnung über Stripe.
 keywords:
   - Lawbster DSGVO
   - Lawbster Auftragsverarbeitungsvertrag
@@ -14,25 +14,39 @@ keywords:
 
 # Compliance & Sicherheit
 
-Lawbster ist als **produktionsreifer** B2B-Dienst gebaut — Compliance ist kein Nachgedanke, sondern Voraussetzung. Wir bedienen Anwälte, Compliance-Teams und Inhouse-Counsel; wer DSGVO nicht ernst nimmt, verkauft hier nichts.
+Lawbster ist als produktionsreifer B2B-Dienst gebaut. Diese Seite gibt einen technischen Überblick über Architektur, Hosting und Sicherheitsmechanismen. Verbindliche Aussagen zu Datenschutz und Vertragsbeziehung stehen in der [Datenschutzerklärung](https://lawbster.planitprima.com/datenschutz) und in den [AGB / der Vertragslandschaft](https://lawbster.planitprima.com/agb).
 
 ## Hosting & Datenflüsse
 
-**Alle Daten werden ausschließlich auf Servern in Deutschland verarbeitet und gespeichert.**
-
-- **Provider:** Hetzner Online GmbH.
-- **Keine Datenübertragung in Drittländer**, mit der einen Ausnahme der Zahlungsabwicklung über Stripe (siehe unten).
+- **Provider:** Hetzner Online GmbH, Rechenzentren in Deutschland.
+- **Zahlungsabwicklung:** Stripe (siehe unten).
 
 ## Auftragsverarbeitungsvertrag (AVV / DPA)
 
-**Art. 28 DSGVO**: Ein Auftragsverarbeitungsvertrag ist Teil der Vertragsbeziehung. Standardvorlage in der [Vertragslandschaft](https://lawbster.planitprima.com/agb) abrufbar; individueller AVV auf Anfrage (`support@planitprima.com`).
+Ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO ist Teil der Vertragsbeziehung.
 
-## Datenschutz im Detail
+### Standard-AVV
 
-- **Lawbster verarbeitet keine personenbezogenen Daten** als typischen Leistungsgegenstand. Der Index enthält ausschließlich öffentliche Rechtstexte (Gesetze, EU-Recht, Bundesgerichtsurteile). Tool-Call-Inhalte werden nicht persistiert.
-- **Telemetrie nur als Metadaten.** Pro Anfrage werden lediglich Zeitpunkt, Tool-Name, Latenz, Status und ein Hash zur Quota-Zählung 30 Tage vorgehalten und danach gelöscht. Der Anfrage-Inhalt selbst (Tool-Call-Argumente) wird nicht gespeichert. Siehe [Datenschutz](https://lawbster.planitprima.com/datenschutz).
-- **Keine Übermittlung der Anfragen an LLM-Anbieter durch Lawbster.** Wenn ein Kunde ChatGPT nutzt, gehen die Anfragen direkt an OpenAI — Lawbster bekommt nur die Tool-Call-Argumente, keinen Prompt-Klartext.
-- **Inhalte des Lawbster-Index sind öffentlich** (Gesetze, EU-Recht, Bundesgerichts­urteile) — keine personenbezogenen Daten in der gelieferten Antwort.
+Unsere Standardvorlage ist in der [Vertragslandschaft](https://lawbster.planitprima.com/agb) abrufbar. Sie ist auf den tatsächlichen Datenfluss zugeschnitten (technische Telemetrie, keine Mandantengeheimnisse als Leistungsgegenstand) und reicht für die meisten Kunden — Kanzleien, Inhouse-Teams, SaaS-Anbieter — ohne Anpassungen aus.
+
+### Individueller AVV auf Anfrage
+
+Wenn interne Compliance-Vorgaben, branchenspezifische Anforderungen oder Konzernverträge eine Abweichung von unserer Standardvorlage verlangen, erstellen wir einen individuellen AVV. Typische Anlässe:
+
+- **Eigene AVV-Vorlage des Kunden**, die wir prüfen und gegenzeichnen.
+- **Erweiterte TOM-Nachweise** — z. B. ISO-27001-orientierte Kontrollkataloge, BSI-Grundschutz-Referenzen.
+- **Engere Subunternehmer-Klauseln** mit Vorab-Zustimmung statt Widerspruchsrecht.
+- **Branchenspezifische Zusätze** für Telkos, Sozialleistungsträger oder beaufsichtigte Branchen.
+- **Konzern-AVVs** mit Joint-Controller-Anlagen.
+- **NDA-Erweiterungen** und verschärfte Vertraulichkeitspflichten.
+
+Anfrage formlos an `support@planitprima.com` — gerne mit Markup auf unserer Vorlage oder eurer eigenen Vorlage im Anhang. Wir melden uns kurz mit dem nächsten Schritt zurück, bevor wir in die Detailprüfung gehen.
+
+## Datenfluss-Architektur
+
+- **Index-Inhalte:** öffentliche Rechtstexte (Bundes- und Landesgesetze, EU-Recht, Bundesgerichtsurteile).
+- **LLM-Pfad:** Wenn der Kunde ChatGPT, Claude.ai o. ä. nutzt, kommuniziert der Client direkt mit dem LLM-Anbieter. Lawbster sieht nur die Tool-Call-Argumente, keinen Prompt-Klartext.
+- **Telemetrie:** technische Metadaten zu jeder Anfrage (Zeitstempel, Tool-Name, Latenz, Status, Quota-Hash). Details und Aufbewahrungsfristen siehe [Datenschutzerklärung](https://lawbster.planitprima.com/datenschutz).
 
 ## Authentifizierung
 
@@ -43,7 +57,7 @@ Lawbster unterstützt **zwei Auth-Pfade**:
 | **API-Key** (`sk-legal-…`) | Server-to-Server, Skripte, Desktop-Clients |
 | **OAuth 2.1** | Browser-Clients (ChatGPT, Claude.ai), kein Klartext-Token |
 
-API-Keys werden **niemals im Klartext gespeichert** — beim Erstellen ist der Klartext genau einmal sichtbar; danach existiert nur ein Hash. Verlorene Keys werden neu erzeugt und der alte widerrufen.
+API-Keys werden serverseitig als SHA-256-Hash abgelegt — der Klartext ist nur einmal beim Erstellen sichtbar. Verlorene Keys werden neu erzeugt und der alte widerrufen.
 
 ## Quota und Rate-Limiting
 
@@ -54,29 +68,20 @@ API-Keys werden **niemals im Klartext gespeichert** — beim Erstellen ist der K
 
 ## Zahlungsabwicklung — Stripe
 
-Stripe erhält **nur Abrechnungsdaten** (Name, E-Mail, Rechnungsanschrift, USt-IdNr., Kartendaten direkt von Stripe Elements aufgenommen — Lawbster sieht **keine** Karteninformationen).
+Stripe verarbeitet die Abrechnungsdaten (Name, E-Mail, Rechnungsanschrift, USt-IdNr.). Kartendaten werden über Stripe Elements direkt im Browser des Kunden an Stripe übergeben und nicht durch Lawbster geleitet.
 
-- **Rechtsgrundlage Drittlandtransfer:** EU-US Data Privacy Framework (Adäquanzbeschluss der EU-Kommission vom 10. Juli 2023, Art. 45 DSGVO).
 - **Stripe Tax** für USt/Reverse-Charge automatisch (DE 19 %, FR-B2B 0 % mit USt-IdNr., US 0 %).
+- Details zur Datenverarbeitung durch Stripe: siehe [Datenschutzerklärung](https://lawbster.planitprima.com/datenschutz).
 
-## Telemetrie
+## Logging und Monitoring
 
-- **Stripe Webhooks** signiert verifiziert.
-- **Strukturierte Logs** ausschließlich lokal — Tool-Call-Inhalte werden nicht protokolliert, an externe Logging-Dienste gehen keinerlei Daten.
-- Optional aktivierbares Error-Tracking — beschränkt auf technische Fehlermeldungen ohne Anfrage-Inhalte.
+- **Stripe Webhooks** werden signiert verifiziert.
+- **Strukturierte Logs** laufen ausschließlich auf der lokalen Infrastruktur; es ist keine Anbindung an externe Logging-Dienste konfiguriert.
+- **Error-Tracking** ist optional aktivierbar und auf technische Fehlermeldungen ausgelegt.
 
-## Datenresidenz und Backup
+## Backups
 
-- **Verschlüsselte Backups** auf deutschen Servern.
-- **Backups verlassen die EU nicht.**
-
-## Compliance-relevante Gesetze, die wir selbst beachten
-
-| Gesetz | Was wir tun |
-| --- | --- |
-| **DSGVO** | AVV, Datenschutzerklärung, Auskunftsrechte, Löschkonzept |
-| **TTDSG** | Keine Tracking-Cookies ohne Einwilligung; Lawbster MCP setzt selbst keine Cookies |
-| **§ 203 StGB** | Wir sind kein Berufsgeheimnisträger, aber unsere Anwaltskunden sind. Lawbster ist so gebaut, dass Klartext-Mandantengeheimnisse **nicht** an unseren Server fließen müssen — der LLM-Anbieter ist die Schnittstelle, Lawbster bekommt nur Tool-Call-Argumente. |
+Backups werden verschlüsselt auf der Hosting-Infrastruktur abgelegt. Aufbewahrungsfristen und Wiederherstellungsprozesse: siehe [AGB](https://lawbster.planitprima.com/agb).
 
 ## Kontakt für Sicherheitsfragen
 

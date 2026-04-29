@@ -65,7 +65,7 @@ Statt sich auf das Trainings-Wissen eines Sprachmodells zu verlassen — das ver
 
     ---
 
-    Hetzner-Server in Deutschland. Keine Datenübertragung in Drittländer. AVV nach Art. 28 DSGVO inklusive.
+    Hetzner-Server in Deutschland. AVV als Vertragsbestandteil. Details siehe AGB und Datenschutzerklärung.
 
 -   :material-account-multiple:{ .lg .middle } **Pro-Seat-Modell, keine Vertragsbindung**
 
@@ -156,16 +156,16 @@ Plus statische [Resources](resources.md) (`legal://rechtsrahmen`, `legal://filte
 
 ---
 
-## Vertrauen & Compliance
+## Architektur & Sicherheit
 
-- **DSGVO-konform**, AVV nach Art. 28 inklusive, Hosting bei Hetzner Online GmbH (Deutschland).
-- **Keine Verarbeitung personenbezogener Daten** im Regelbetrieb — der Index enthält nur öffentliche Rechtstexte, Tool-Call-Inhalte werden nicht persistiert.
-- **API-Keys SHA-256-gehasht** in der Datenbank, Klartext nur einmal sichtbar.
-- **Stripe** (Zahlungsabwicklung) unter EU-US Data Privacy Framework.
+- **Hosting** bei Hetzner Online GmbH in Deutschland.
+- **Index-Inhalt:** ausschließlich öffentliche Rechtstexte (Gesetze, EU-Recht, Bundesgerichtsurteile).
+- **Auth:** API-Keys werden als SHA-256-Hash gespeichert, Klartext ist nur einmal beim Erstellen sichtbar; alternativ OAuth 2.1.
+- **Zahlungsabwicklung** über Stripe.
 - **Transparente Benchmarks** auf [GerLeRB](benchmarks.md), öffentlich nachvollziehbar.
 - **Fair-Use 60 Anfragen/min** pro Seat — kein Drosseln im normalen Betrieb.
 
-→ [Vollständige Compliance-Übersicht](compliance.md)
+→ [Technische Compliance-Übersicht](compliance.md) · Verbindliches in AGB und Datenschutzerklärung.
 
 ---
 

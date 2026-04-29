@@ -25,3 +25,11 @@ site/
 .idea/
 *.swp
 .DS_Store
+
+# Claude Code local settings
+.claude/
+
+# Scratch / test files
+test.md
+scratch/
+*.scratch.md

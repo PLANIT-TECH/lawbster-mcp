@@ -31,7 +31,7 @@ keywords:
 - **Alle acht Tools** + drei Prompts + alle Resources
 - **Tägliche Aktualisierung** aus amtlichen Quellen
 - **Bevorzugter E-Mail-Support**
-- **Auftragsverarbeitungsvertrag (AVV)** nach Art. 28 DSGVO
+- **Auftragsverarbeitungsvertrag (AVV)** als Vertragsbestandteil
 
 ## Wie sich der Preis zusammensetzt
 

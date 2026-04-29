@@ -75,22 +75,22 @@ keywords:
 
 ## Compliance & Sicherheit
 
-??? question "Ist Lawbster DSGVO-konform?"
-    Ja. Hosting ausschließlich in Deutschland, Auftragsverarbeitungsvertrag (EU-Standardvertragsklauseln nach Art. 28 DSGVO) als Vertragsbestandteil — er greift, falls im Einzelfall personenbezogene Daten verarbeitet werden. Im Regelbetrieb fließen keine personenbezogenen Daten zu Lawbster.
+??? question "Wo wird Lawbster gehostet?"
+    Bei Hetzner Online GmbH in Deutschland. Zahlungsabwicklung läuft über Stripe.
 
-    → [Vollständige Compliance-Übersicht](compliance.md)
+    → [Technische Compliance-Übersicht](compliance.md) · Verbindliches in AGB und Datenschutzerklärung.
 
-??? question "Wo werden Daten gespeichert?"
-    Ausschließlich auf Servern in Deutschland (Hetzner). Backups verlassen die EU nicht. Einzige Drittland-Komponente: Stripe für Zahlungsabwicklung — unter dem EU-US Data Privacy Framework (Art. 45 DSGVO).
+??? question "Welcher Vertrag liegt der Nutzung zugrunde?"
+    Ein Auftragsverarbeitungsvertrag ist Teil der Vertragsbeziehung. Standardvorlage in der [Vertragslandschaft](https://lawbster.planitprima.com/agb), individueller AVV auf Anfrage über `support@planitprima.com`.
 
-??? question "Werden meine Anfragen gespeichert?"
-    Nein. Tool-Call-Inhalte werden nicht persistiert. Pro Anfrage werden lediglich Telemetrie-Metadaten (Zeitpunkt, Tool-Name, Latenz, Status, Quota-Hash) für 30 Tage vorgehalten und danach gelöscht. Inhalte des Lawbster-Index sind öffentlich (Gesetze, Urteile) — keine personenbezogenen Daten in der Antwort.
+??? question "Was sieht Lawbster von meinen Anfragen?"
+    Technisch: die Tool-Call-Argumente plus Metadaten (Zeitstempel, Tool-Name, Latenz, Status, Quota-Hash). Konkrete Aufbewahrungsfristen und Löschkonzept stehen in der [Datenschutzerklärung](https://lawbster.planitprima.com/datenschutz).
 
 ??? question "Kann ich Lawbster on-premise betreiben?"
     Aktuell nicht im Standardangebot. On-Premise- und Single-Tenant-Deployments sind für Enterprise-Kunden möglich — Kontakt: `support@planitprima.com`.
 
-??? question "Ist das § 203 StGB-konform für Anwaltskanzleien?"
-    Lawbster ist so gebaut, dass kein Klartext eines Mandantengeheimnisses an den Lawbster-Server gehen muss. Der LLM-Anbieter (Claude, ChatGPT) ist die Schnittstelle zum Mandantengespräch — Lawbster bekommt nur die Tool-Call-Argumente, also typischerweise eine entkontextualisierte juristische Frage. Für die Beurteilung im Einzelfall empfehlen wir die Abstimmung mit deiner Kammer.
+??? question "Wie sieht der Datenfluss bei Mandantengesprächen aus?"
+    Architektonisch: Der LLM-Anbieter (Claude, ChatGPT) ist die Schnittstelle zum Mandantengespräch. Lawbster bekommt nur die Tool-Call-Argumente vom LLM, also typischerweise entkontextualisierte juristische Fragen — keinen Prompt-Klartext. Eine berufsrechtliche Beurteilung im Einzelfall ist jedoch Sache deiner Kammer und nicht etwas, das wir hier zusichern.
 
 ## Verträge & Pricing
 
