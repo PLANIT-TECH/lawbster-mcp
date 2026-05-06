@@ -1,6 +1,8 @@
 <div align="center">
 
-<img src="docs/assets/lawbster-mark.svg" alt="Lawbster" width="120" />
+<a href="https://lawbster.planitprima.com">
+  <img alt="Lawbster — Verifizierter, zitierfähiger Rechtskontext für jeden KI-Assistenten" src="public/cover.png" />
+</a>
 
 # Lawbster — Deutsches & EU-Recht für jeden KI-Assistenten
 

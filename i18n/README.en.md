@@ -1,6 +1,8 @@
 <div align="center">
 
-<img src="../docs/assets/lawbster-mark.svg" alt="Lawbster" width="120" />
+<a href="https://lawbster.planitprima.com">
+  <img alt="Lawbster — Verified, citable legal context for any AI assistant" src="../public/cover.png" />
+</a>
 
 # Lawbster — German & EU Law for any AI Assistant
 
