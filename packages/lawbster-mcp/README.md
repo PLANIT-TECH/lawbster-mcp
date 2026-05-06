@@ -90,6 +90,6 @@ If your client speaks Streamable HTTP MCP natively, prefer the direct connection
 - Repo: [github.com/PLANIT-TECH/lawbster-mcp](https://github.com/PLANIT-TECH/lawbster-mcp)
 - License: MIT (see [LICENSE](https://github.com/PLANIT-TECH/lawbster-mcp/blob/main/LICENSE))
 - Bug reports & feature requests: [GitHub Issues](https://github.com/PLANIT-TECH/lawbster-mcp/issues)
-- Security disclosure: `security@planitprima.com`
+- Security disclosure: `support@planitprima.com`
 
 The hosted Lawbster service itself is closed-source SaaS operated by **PLANIT // TECH GmbH** in Germany.

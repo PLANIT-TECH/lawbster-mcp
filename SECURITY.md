@@ -8,9 +8,7 @@ If you discover a security vulnerability in Lawbster — either in the hosted se
 
 ### How to report
 
-Email: **`security@planitprima.com`** (preferred) — encrypt with our PGP key on request.
-
-Alternative: `support@planitprima.com` with the subject prefixed by `[SECURITY]`.
+Email: **`support@planitprima.com`** with the subject prefixed by `[SECURITY]`. Encrypted communication with our PGP key is available on request.
 
 ### What to include
 
@@ -62,4 +60,4 @@ _(none yet)_
 
 ---
 
-**Contact:** `security@planitprima.com` · **Website:** [lawbster.planitprima.com](https://lawbster.planitprima.com)
+**Contact:** `support@planitprima.com` · **Website:** [lawbster.planitprima.com](https://lawbster.planitprima.com)
