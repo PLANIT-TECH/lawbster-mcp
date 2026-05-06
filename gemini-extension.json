@@ -1,0 +1,21 @@
+{
+  "name": "lawbster",
+  "description": "Verified, citable German & EU law for any LLM. Daily updates from official sources, hosted in Germany.",
+  "version": "1.0.0",
+  "settings": [
+    {
+      "name": "API Key",
+      "description": "Lawbster API key (sk-legal-…). Create one at https://lawbster.planitprima.com (14-day free trial, no credit card).",
+      "envVar": "LAWBSTER_API_KEY"
+    }
+  ],
+  "mcpServers": {
+    "lawbster": {
+      "command": "npx",
+      "args": ["-y", "@planit-lawbster/lawbster-mcp"],
+      "env": {
+        "LAWBSTER_API_KEY": "${LAWBSTER_API_KEY}"
+      }
+    }
+  }
+}

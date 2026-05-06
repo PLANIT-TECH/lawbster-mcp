@@ -1,0 +1,8 @@
+{
+  "name": "lawbster-plugin",
+  "description": "Lawbster MCP server for verified, citable German & EU law. Provides statutes (BGB, GDPR, AI Act, MiCA, NIS2, …) and federal court decisions (BGH, BVerfG, BAG, BSG, BFH, BPatG, EuGH) on demand, with mandatory citation discipline.",
+  "author": {
+    "name": "PLANIT // TECH GmbH",
+    "url": "https://lawbster.planitprima.com"
+  }
+}
