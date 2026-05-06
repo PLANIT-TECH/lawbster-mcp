@@ -1,0 +1,60 @@
+{
+  "name": "@planit-tech/lawbster-mcp",
+  "version": "0.1.0",
+  "description": "Local MCP bridge for Lawbster — verified, citable German & EU law for any MCP-capable AI assistant. Forwards stdio MCP traffic to https://lawbster.planitprima.com/mcp.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "cursor",
+    "lawbster",
+    "legal",
+    "german-law",
+    "eu-law",
+    "bgb",
+    "gdpr",
+    "dsgvo"
+  ],
+  "homepage": "https://github.com/PLANIT-TECH/lawbster-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/PLANIT-TECH/lawbster-mcp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PLANIT-TECH/lawbster-mcp.git",
+    "directory": "packages/lawbster-mcp"
+  },
+  "license": "MIT",
+  "author": "PLANIT // TECH GmbH <support@planitprima.com> (https://lawbster.planitprima.com)",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "bin": {
+    "lawbster-mcp": "./dist/index.js"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "commander": "^14.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

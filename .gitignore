@@ -33,3 +33,10 @@ site/
 test.md
 scratch/
 *.scratch.md
+
+# Node / TypeScript
+node_modules/
+dist/
+*.tsbuildinfo
+npm-debug.log*
+.npmrc
