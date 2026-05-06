@@ -11,7 +11,7 @@ Format orientiert an [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 - Englische Vollübersetzung der README unter `i18n/README.en.md`.
 
 ### Added
-- npm-Wrapper-Paket `@planit-tech/lawbster-mcp` als stdio↔HTTPS-Bridge — `npx -y @planit-tech/lawbster-mcp setup --client <cursor|claude|vscode>`.
+- npm-Wrapper-Paket `@planit-lawbster/lawbster-mcp` als stdio↔HTTPS-Bridge — `npx -y @planit-lawbster/lawbster-mcp setup --client <cursor|claude|vscode>`.
 - Skills/Rules-Snippets: Cursor-Rule (`rules/cursor.md`), Claude-Code-Skill (`skills/legal-research/SKILL.md`), ChatGPT-Custom-GPT-System-Prompt (`prompts/chatgpt-custom-gpt.md`), GitHub-Copilot-Instructions-Vorlage (`prompts/copilot-instructions.md`).
 - GitHub-Actions-Workflow `npm-publish.yml` — Build und Publish des Wrapper-Pakets bei Tag `v*.*.*`.
 

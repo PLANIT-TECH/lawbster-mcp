@@ -8,7 +8,7 @@
 Claude · ChatGPT · Cursor · Copilot · any MCP-capable client.
 
 [![Website](https://img.shields.io/badge/website-lawbster.planitprima.com-0a7c3e?style=flat-square)](https://lawbster.planitprima.com)
-[![NPM](https://img.shields.io/npm/v/@planit-tech/lawbster-mcp?style=flat-square&logo=npm)](https://www.npmjs.com/package/@planit-tech/lawbster-mcp)
+[![NPM](https://img.shields.io/npm/v/@planit-lawbster/lawbster-mcp?style=flat-square&logo=npm)](https://www.npmjs.com/package/@planit-lawbster/lawbster-mcp)
 [![MCP](https://img.shields.io/badge/protocol-MCP-8a2be2?style=flat-square)](https://modelcontextprotocol.io)
 [![GDPR](https://img.shields.io/badge/compliance-GDPR-005bbb?style=flat-square)](https://lawbster.planitprima.com/datenschutz)
 [![Made in Germany](https://img.shields.io/badge/hosting-Germany%20%F0%9F%87%A9%F0%9F%87%AA-000000?style=flat-square)](https://lawbster.planitprima.com/datenschutz)
@@ -44,7 +44,7 @@ Lawbster is a **production-grade MCP server** giving AI assistants verified acce
 
 ```bash
 # Option 1 — npx setup (any client, easiest path)
-npx -y @planit-tech/lawbster-mcp setup --client claude
+npx -y @planit-lawbster/lawbster-mcp setup --client claude
 # supported: claude | cursor | vscode | windsurf
 
 # Option 2 — manual entry (see per-client sections below)

@@ -1,4 +1,4 @@
-# @planit-tech/lawbster-mcp
+# @planit-lawbster/lawbster-mcp
 
 Local MCP bridge for [Lawbster](https://lawbster.planitprima.com) — verified, citable German & EU law for any MCP-capable AI assistant.
 
@@ -11,7 +11,7 @@ This package is a thin **stdio↔HTTPS bridge**. It runs on your machine, expose
 No global install required — use `npx`:
 
 ```bash
-npx -y @planit-tech/lawbster-mcp setup --client claude
+npx -y @planit-lawbster/lawbster-mcp setup --client claude
 ```
 
 Supported `--client` values: `claude` · `cursor` · `vscode` · `windsurf`
@@ -21,9 +21,9 @@ The `setup` command writes a properly-formatted MCP server entry into the right 
 You'll be prompted for an API key — get one (14-day free trial, no credit card) at [lawbster.planitprima.com](https://lawbster.planitprima.com). Or pass it explicitly:
 
 ```bash
-npx -y @planit-tech/lawbster-mcp setup --client cursor --api-key sk-legal-...
+npx -y @planit-lawbster/lawbster-mcp setup --client cursor --api-key sk-legal-...
 # or via env:
-LAWBSTER_API_KEY=sk-legal-... npx -y @planit-tech/lawbster-mcp setup --client cursor
+LAWBSTER_API_KEY=sk-legal-... npx -y @planit-lawbster/lawbster-mcp setup --client cursor
 ```
 
 ## Run as a server
@@ -31,9 +31,9 @@ LAWBSTER_API_KEY=sk-legal-... npx -y @planit-tech/lawbster-mcp setup --client cu
 The default subcommand (`serve`) is what MCP clients invoke when they spawn this binary:
 
 ```bash
-LAWBSTER_API_KEY=sk-legal-... npx -y @planit-tech/lawbster-mcp
+LAWBSTER_API_KEY=sk-legal-... npx -y @planit-lawbster/lawbster-mcp
 # equivalent to:
-LAWBSTER_API_KEY=sk-legal-... npx -y @planit-tech/lawbster-mcp serve
+LAWBSTER_API_KEY=sk-legal-... npx -y @planit-lawbster/lawbster-mcp serve
 ```
 
 It reads JSON-RPC frames from stdin and writes them back on stdout, while shuttling everything over HTTPS to Lawbster.
@@ -47,7 +47,7 @@ If you'd rather edit the client config yourself, the entry looks like this:
   "mcpServers": {
     "lawbster": {
       "command": "npx",
-      "args": ["-y", "@planit-tech/lawbster-mcp"],
+      "args": ["-y", "@planit-lawbster/lawbster-mcp"],
       "env": {
         "LAWBSTER_API_KEY": "sk-legal-..."
       }
@@ -81,7 +81,7 @@ That means any future MCP method (tools, resources, prompts, sampling, …) work
 - **Older client versions** that only spawn stdio subprocesses
 - **Air-gapped or proxied networks** where you want a single outbound endpoint and per-process auth
 - **Fewer config knobs** for users who'd rather paste a binary name than a URL + Bearer header
-- **Discovery via npm** — Awesome-MCP lists, Reddit threads, and the npm registry index it as `@planit-tech/lawbster-mcp`
+- **Discovery via npm** — Awesome-MCP lists, Reddit threads, and the npm registry index it as `@planit-lawbster/lawbster-mcp`
 
 If your client speaks Streamable HTTP MCP natively, prefer the direct connection — one fewer process, no Node.js install required.
 

@@ -13,7 +13,7 @@ on:
 
 jobs:
   publish:
-    name: Build & publish @planit-tech/lawbster-mcp
+    name: Build & publish @planit-lawbster/lawbster-mcp
     runs-on: ubuntu-latest
     permissions:
       contents: read

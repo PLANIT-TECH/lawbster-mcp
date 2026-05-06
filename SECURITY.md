@@ -40,7 +40,7 @@ We will credit reporters in the changelog and (with consent) in a public securit
 - Authentication / authorization issues (API key handling, OAuth flow, JWT validation)
 - Quota / rate-limit bypass
 - Data leaks (cross-tenant access to indexed content metadata or quota counters)
-- Vulnerabilities in the npm wrapper package (`@planit-tech/lawbster-mcp`) — credential exfiltration, code injection in setup CLI, etc.
+- Vulnerabilities in the npm wrapper package (`@planit-lawbster/lawbster-mcp`) — credential exfiltration, code injection in setup CLI, etc.
 - Security issues in the rules / skills / prompts shipped from this repo (e.g. injection vectors when loaded by client editors)
 
 **Out of scope:**
