@@ -1,0 +1,88 @@
+# Lawbster-Rule für Cursor
+
+Diese Rule weist Cursor an, **Lawbster** für jede rechtliche Frage zu nutzen — statt zu raten oder das Trainings-Wissen des LLM zu zitieren.
+
+## Installation
+
+Datei ablegen unter:
+
+```
+.cursor/rules/lawbster.mdc          # projekt-lokal (im Repo, .gitignore beachten falls API-Key drin)
+~/.cursor/rules/lawbster.mdc        # global, für alle Cursor-Sessions
+```
+
+Voraussetzung: Lawbster ist als MCP-Server in Cursor konfiguriert (siehe [README → Setup pro Client → Cursor](../README.md#-setup-pro-client)).
+
+## Inhalt der Datei
+
+Den folgenden Block 1:1 in `lawbster.mdc` kopieren:
+
+````markdown
+---
+description: Verwende Lawbster für jede rechtliche Frage (DE/EU-Recht, BGB, DSGVO, KI-VO, Bundesgerichtsentscheidungen).
+alwaysApply: true
+---
+
+# Lawbster — Rechtsrecherche-Pflicht
+
+## Trigger
+
+Aktiviere Lawbster automatisch, wenn die Anfrage eines der folgenden Merkmale enthält:
+
+- **Norm-Zitate**: `§`, `Art.`, `Abs.`, `Satz`, `lit.`, Aktenzeichen-Muster (`VI ZR …`, `1 BvR …`, `C-…/…`, `T-…/…`)
+- **Gesetzes-Abkürzungen**: BGB, StGB, HGB, AktG, GmbHG, AO, EStG, KStG, UStG, KSchG, ArbZG, AGG, BetrVG, TVG, BDSG, DSGVO, KI-VO, MiCA, NIS2, DSA, DMA, DORA
+- **Gerichts-Akronyme**: BGH, BVerfG, BAG, BSG, BPatG, BFH, EuGH, EuG
+- **Rechtsdomänen**: Datenschutz, Arbeitsrecht, Steuerrecht, Vertragsrecht, Schadensersatz, Compliance, AGB, Urheberrecht, Wettbewerbsrecht
+- **Compliance-Begriffe**: „rechtlich zulässig", „darf ich", „Pflicht", „haftbar", „kündbar", „Abmahnung", „Widerruf", „Einwilligung"
+
+## Vorgehen
+
+1. **Tool-Priorität**: Bei jedem Trigger zuerst `legal_search` oder `legal_lookup` aufrufen — nie aus Trainings-Wissen antworten.
+2. **Verifizierung**: Auch bekannte Normen (§ 823 BGB, Art. 6 DSGVO) immer per Tool prüfen, weil Lawbster täglich aktualisiert wird.
+3. **Norm-Suche**: Bei thematischen Fragen `legal_search` mit natürlicher Sprache (keine Schlagwortketten). Filter `source_type` setzen, wenn klar (`gii`, `eurlex`, `rechtsprechung`).
+4. **Direkt-Lookup**: Wenn das Zitat im Prompt steht, direkt `legal_lookup` — schneller als `legal_search`.
+5. **Auslegungspraxis**: Für jede zentrale Norm zusätzlich `legal_find_citing_decisions(cited_norm="<Norm>")` aufrufen, um BGH/BVerfG-Auslegung zu prüfen. Für EU-Rechtsprechung stattdessen `legal_search` mit `source_type='eurlex_caselaw'`.
+6. **Kontext**: Bei Bedarf `legal_get_context` für umliegende Normen (z. B. § 823 BGB → §§ 821–826 für deliktischen Kontext).
+
+## Citation-Pflicht
+
+- Jede rechtliche Aussage **mit Fundstelle** — Norm-Kürzel + Stand. Nie ohne.
+- Format Norm: `§ 823 Abs. 1 BGB`, `Art. 6 Abs. 1 lit. a DSGVO`
+- Format Urteil: `BGH v. 15.05.2023 — VI ZR 175/22` mit URL aus `legal-mcp`
+- **Block-Quote** beim wörtlichen Zitieren des Gesetzes-/Urteilstextes; **normaler Text** für eigene Subsumtion/Interpretation
+- Wenn `legal-mcp` eine URL liefert: zwingend als Markdown-Link einbinden
+
+## Verbote
+
+- **Keine fiktiven Quellen.** Aktenzeichen, Daten, ECLI-Nummern niemals erfinden — wenn `legal_lookup` `found=false` liefert, mit `legal_search` als Fallback suchen, sonst „Fundstelle nicht auffindbar" antworten.
+- **Keine ungesicherten Aussagen.** Wenn der Tool-Output einen Absatz oder ein Aktenzeichen nicht enthält, darf er nicht „ergänzt" werden.
+- **Keine Antwort ohne Tool-Use** bei rechtlichen Fragen, auch nicht „nach meinem Wissen" oder „üblicherweise".
+- **Keine Rechtsberatung.** Nur Information mit Fundstelle. Bei konkreter Rechtsberatung: Hinweis auf Anwalt/Anwältin.
+
+## Anwendungsfälle in Cursor
+
+- **AGB / Verträge im Code-Generator**: Bevor Cursor eine AGB-Klausel oder einen Vertragstext schreibt, einschlägige BGB-Paragrafen (§§ 305–310, § 309 Nr. 7) per `legal_lookup_batch` ziehen.
+- **Datenverarbeitungs-Code**: Beim Schreiben von Code, der personenbezogene Daten verarbeitet, Art. 6, Art. 9, Art. 32 DSGVO prüfen — Rechtsgrundlage im Code-Kommentar dokumentieren.
+- **KI-Pipelines**: Beim Bau von ML-Pipelines `legal_lookup Art. 6 KI-VO` aufrufen und Risiko-Tier kommentieren.
+- **Compliance-Checks**: Bei jeder Frage „darf das Modul X tun?" → Lawbster, nicht Allgemeinwissen.
+
+## Slash-Commands (über MCP-Prompts)
+
+Wenn der Nutzer in der Cursor-Eingabe folgende Phrasen verwendet, entsprechenden Workflow ausführen:
+
+- „Recherchiere …" / „Was sagt das Recht zu …" → `/legal_research` (mit `jurisdiction=DE+EU`, `depth=thorough`)
+- „Was steht in § …" / „Erkläre Art. …" → `/citation_resolve`
+- „Vergleiche DE und EU bei …" → `/compare_de_eu`
+````
+
+## Zusammenspiel mit MCP-Prompts
+
+Lawbster liefert serverseitig drei [MCP-Prompts](../README.md#-mcp-resources--prompts) (`/legal_research`, `/citation_resolve`, `/compare_de_eu`). Cursor zeigt diese je nach Version unterschiedlich an. Diese Rule ist die **Client-seitige Variante**, die unabhängig von Prompt-Support funktioniert — sie erzwingt das gleiche Verhalten direkt im Composer.
+
+## Anpassung
+
+Du kannst die Rule projektspezifisch erweitern, z. B.:
+
+- **Bestimmte Rechtsdomäne** (`description` enger fassen, z. B. „Verwende Lawbster für Datenschutz- und KI-VO-Fragen")
+- **Sprache** (Antworten auf Englisch erzwingen für internationale Teams)
+- **Output-Format** (z. B. Tabelle statt Fließtext für Compliance-Reviews)

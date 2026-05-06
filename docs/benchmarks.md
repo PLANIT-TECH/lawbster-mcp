@@ -1,16 +1,3 @@
----
-title: Benchmarks — Retrieval-Qualität auf GerLeRB
-description: >-
-  Lawbster auf dem GerLeRB-Benchmark: 367 deutsche Rechtsfragen, 58
-  Gesetzbücher. MRR@10 0,676. Transparent reproduzierbar, Datensatz auf Zenodo.
-keywords:
-  - GerLeRB Benchmark
-  - Legal Retrieval Benchmark
-  - MRR@10 Recht
-  - juristische Suche Benchmark
-  - Lawbster Qualität
----
-
 # Benchmarks
 
 Lawbster wird gegen den **GerLeRB**-Benchmark evaluiert — den (aktuell) einzigen offen verfügbaren deutschen Legal-Retrieval-Benchmark mit Ground-Truth-Annotationen.
