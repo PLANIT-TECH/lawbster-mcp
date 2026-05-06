@@ -31,7 +31,7 @@
     "node": ">=18.0.0"
   },
   "bin": {
-    "lawbster-mcp": "./dist/index.js"
+    "lawbster-mcp": "dist/index.js"
   },
   "files": [
     "dist/",
