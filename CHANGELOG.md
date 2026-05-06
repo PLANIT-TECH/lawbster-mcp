@@ -13,6 +13,11 @@ Format orientiert an [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 ### Added
 - npm-Wrapper-Paket `@planit-tech/lawbster-mcp` als stdio↔HTTPS-Bridge — `npx -y @planit-tech/lawbster-mcp setup --client <cursor|claude|vscode>`.
 - Skills/Rules-Snippets: Cursor-Rule (`rules/cursor.md`), Claude-Code-Skill (`skills/legal-research/SKILL.md`), ChatGPT-Custom-GPT-System-Prompt (`prompts/chatgpt-custom-gpt.md`), GitHub-Copilot-Instructions-Vorlage (`prompts/copilot-instructions.md`).
+- GitHub-Actions-Workflow `npm-publish.yml` — Build und Publish des Wrapper-Pakets bei Tag `v*.*.*`.
+
+### Removed
+- MkDocs-Setup komplett: `mkdocs.yml`, `requirements.txt`, `overrides/main.html`, alle `docs/*.en.md`-Suffix-Duplikate sowie die in die Root-README oder Marketing-Site migrierten Inhalte (`docs/index*`, `docs/quickstart/`, `docs/tools/`, `docs/changelog*`, `docs/compliance*`, `docs/data-sources*`, `docs/pricing*`, `docs/prompts*`, `docs/resources*`, `docs/search-pipeline*`, `docs/.nojekyll`, `docs/robots.txt`).
+- GitHub-Pages-Deploy-Workflow `.github/workflows/deploy.yml`. Die alte Doku-Site unter `planit-tech.github.io/lawbster-mcp` wird mit dem nächsten Push offline genommen — Compliance- und Pricing-Inhalte liegen weiterhin auf [lawbster.planitprima.com](https://lawbster.planitprima.com), Setup- und Tool-Doku in der Root-`README.md`.
 
 ## 2026
 
