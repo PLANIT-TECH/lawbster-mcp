@@ -1,6 +1,6 @@
 {
   "name": "@planit-lawbster/lawbster-mcp",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Local MCP bridge for Lawbster — verified, citable German & EU law for any MCP-capable AI assistant. Forwards stdio MCP traffic to https://lawbster.planitprima.com/mcp.",
   "keywords": [
     "mcp",
