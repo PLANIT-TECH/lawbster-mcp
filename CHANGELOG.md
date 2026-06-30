@@ -33,7 +33,7 @@ Format orientiert an [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 - **Confidence-Scores & Hinweise** — Such- und Lookup-Antworten enthalten eine Vertrauenseinstufung und Hinweise zur nächsten sinnvollen Aktion; geführter Setup-Assistent für die MCP-Client-Einrichtung.
 
 **Verteilung & Integration**
-- **npm-Wrapper-Paket** `@planit-lawbster/lawbster-mcp` — stdio↔HTTPS-Bridge für lokale MCP-Clients; Einrichtung per `npx -y @planit-lawbster/lawbster-mcp setup --client <cursor|claude|vscode>`.
+- **npm-Wrapper-Paket** `@planit-lawbster/lawbster-mcp` — stdio↔HTTPS-Bridge für lokale MCP-Clients; Einrichtung per `npx -y @planit-lawbster/lawbster-mcp setup --client <claude|cursor|vscode|windsurf>`.
 - **Fertige Integrations-Snippets** für Cursor, Claude Code, ChatGPT (Custom GPT) und GitHub Copilot.
 - **README-first-Dokumentation** in Deutsch und Englisch; die frühere separate Doku-Website wurde abgelöst.
 

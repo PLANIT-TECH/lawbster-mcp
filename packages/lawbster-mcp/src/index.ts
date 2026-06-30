@@ -1,9 +1,14 @@
 #!/usr/bin/env node
+import { readFileSync } from "node:fs";
 import { Command } from "commander";
 import { runBridge } from "./bridge.js";
 import { runSetup, type SupportedClient } from "./setup.js";
 
-const PKG_VERSION = "0.1.0";
+// Single source of truth for the version: package.json (always shipped in the
+// published tarball). Avoids the constant drifting away from package.json.
+const PKG_VERSION: string = JSON.parse(
+  readFileSync(new URL("../package.json", import.meta.url), "utf8"),
+).version;
 const SUPPORTED_CLIENTS: readonly SupportedClient[] = ["claude", "cursor", "vscode", "windsurf"];
 
 const program = new Command();
