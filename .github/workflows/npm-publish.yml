@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write  # required for npm provenance
+      id-token: write  # OIDC token for npm Trusted Publishing (auth + provenance, no NPM_TOKEN)
 
     steps:
       - uses: actions/checkout@v4
@@ -28,6 +28,10 @@ jobs:
           registry-url: "https://registry.npmjs.org"
           cache: "npm"
           cache-dependency-path: packages/lawbster-mcp/package-lock.json
+
+      # Trusted Publishing (OIDC) needs npm >= 11.5.1; Node 22 ships an older npm.
+      - name: Upgrade npm for Trusted Publishing
+        run: npm install -g npm@latest
 
       - name: Verify tag matches package version
         if: startsWith(github.ref, 'refs/tags/v')
@@ -54,9 +58,9 @@ jobs:
         working-directory: packages/lawbster-mcp
         run: npm publish --dry-run --access public
 
+      # Auth + provenance happen automatically via OIDC Trusted Publishing — no NPM_TOKEN.
+      # Prerequisite: a trusted publisher for this repo + workflow is configured on npmjs.com.
       - name: Publish
         if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && !inputs.dry-run)
         working-directory: packages/lawbster-mcp
-        run: npm publish --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
