@@ -85,7 +85,7 @@ npx -y @planit-lawbster/lawbster-mcp setup --client claude
 }
 ```
 
-**Fully quit** Claude Desktop (Quit, not just close the window) and reopen. The MCP icon now shows **Lawbster** with eight tools.
+**Fully quit** Claude Desktop (Quit, not just close the window) and reopen. The MCP icon now shows **Lawbster** with nine tools.
 
 **Test prompt:** *"What are the prerequisites for a non-pecuniary damages claim under § 253 BGB? Please cite sources."*
 
@@ -234,7 +234,7 @@ curl -X POST https://lawbster.planitprima.com/mcp \
 
 ## 🛠️ Tools
 
-Eight tools, all batch-capable, all async, all citable. Discovery tools return compact responses (~4 k tokens), detail tools return full text. Standard pagination via `count` / `total` / `offset` / `has_more` / `next_offset` / `hint`.
+Nine tools, all batch-capable, all async, all citable. Discovery tools return compact responses (~4 k tokens), detail tools return full text. Standard pagination via `count` / `total` / `offset` / `has_more` / `next_offset` / `hint`.
 
 | Tool | Purpose | Category |
 | --- | --- | --- |
@@ -243,6 +243,7 @@ Eight tools, all batch-capable, all async, all citable. Discovery tools return c
 | [`legal_lookup_batch`](../docs/tools-reference.md#legal_lookup_batch) | Up to 20 lookups in one call | Detail |
 | [`legal_get_context`](../docs/tools-reference.md#legal_get_context) | Surrounding norms of a reference | Detail |
 | [`legal_find_citing_decisions`](../docs/tools-reference.md#legal_find_citing_decisions) | Federal court decisions citing a norm | Detail |
+| [`legal_get_materials`](../docs/tools-reference.md#legal_get_materials) | Official legislative reasoning (Bundestag paper) for a norm | Detail |
 | [`legal_list_laws`](../docs/tools-reference.md#legal_list_laws) | List available laws | Discovery |
 | [`legal_get_toc`](../docs/tools-reference.md#legal_get_toc) | Table of contents of a law | Discovery |
 | [`legal_get_stats`](../docs/tools-reference.md#legal_get_stats) | Index and database statistics | Discovery |
@@ -324,16 +325,24 @@ Pre-built snippets that teach your AI client **when** and **how** to use Lawbste
 
 | Source | Content | Updated |
 | --- | --- | --- |
-| **German federal law** | BGB, ZPO, HGB, AktG, GmbHG, StGB, StPO, AO, EStG, KStG, UStG, SGB I–XII, KSchG, ArbZG, MiLoG, AGG, BetrVG, TVG, BDSG, … | Daily |
+| **German federal law** | BGB, ZPO, HGB, AktG, GmbHG, StGB, StPO, AO, EStG, KStG, UStG, SGB I–XII, KSchG, ArbZG, MiLoG, AGG, BetrVG, TVG, BDSG, … — statutes **and** federal regulations | Daily |
+| **State law (Länder)** | Bavaria (gesetze-bayern.de) and North Rhine-Westphalia (recht.nrw.de) — state statutes & regulations | Daily |
+| **Federal administrative rules** | Application decrees, guidelines, implementing rules (e.g. TA Luft, AEAO) | Daily |
 | **EU law** | GDPR, AI Act, MiCA, DORA, NIS2, DSA, DMA, Data Act, Data Governance Act, regulations, directives, decisions | Daily |
-| **CJEU case law** | Case numbers like `C-311/18`, `T-451/20` | Daily |
-| **Federal courts** | BGH, BVerfG, BAG, BSG, BPatG, BFH | Daily |
+| **CJEU / GC case law** | Case numbers like `C-311/18`, `T-451/20` | Daily |
+| **Federal courts (2010–)** | BGH, BVerwG, BFH, BAG, BSG, BVerfG, BPatG, GmSOGB | Daily |
+| **Landmark decisions (pre-2010)** | BVerfGE (official reports, incl. Lüth/Elfes), BVerwG judgments | Closed historical set |
+| **State courts** | Saxony Higher Administrative Court (Bautzen), NRW higher courts (OVG/OLG/LAG/FG/LSG/Constitutional Court NRW) | Continuous |
+| **Data-protection guidance** | EDPB guidelines & DSK resolutions — soft law on GDPR/BDSG | Continuous |
+| **Legislative materials** | Bundestag printed papers with official reasoning — the legislator's intent (`legal_get_materials` tool) | Daily |
 
-**Complete German federal law · complete EU law · federal court decisions · every norm individually citable.** All content from official, freely accessible sources — no publisher licence, no third-party data, no opaque licence chain.
+**Complete German federal law · Bavaria & NRW state law · complete EU law · federal and state court decisions · data-protection guidance · every norm individually citable.** All content from official, freely accessible sources — no publisher licence, no third-party data, no opaque licence chain.
 
 **Stable reverse index:** which norm has been cited by which decision? Powers the `legal_find_citing_decisions` tool.
 
-**What's not in:** local-government law, professional-body law, scholarly literature, commentary, journals (publisher-licensed) — Lawbster is the base layer, combinable with your publisher subscription.
+**Free on the web:** Over 235,000 law pages covering German federal and EU law are browsable without login at [lawbster.planitprima.com](https://lawbster.planitprima.com) — each provision with linked relevant case-law and, where available, explanatory descriptions.
+
+**Is my law covered?** A free-text search on the [landing page](https://lawbster.planitprima.com) instantly tells you whether the laws relevant to you are indexed in Lawbster.
 
 ---
 

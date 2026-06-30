@@ -85,7 +85,7 @@ npx -y @planit-lawbster/lawbster-mcp setup --client claude
 }
 ```
 
-Claude Desktop **vollständig beenden** (Quit, nicht nur Fenster schließen) und neu öffnen. Das MCP-Icon zeigt jetzt **Lawbster** mit acht Tools.
+Claude Desktop **vollständig beenden** (Quit, nicht nur Fenster schließen) und neu öffnen. Das MCP-Icon zeigt jetzt **Lawbster** mit neun Tools.
 
 **Test-Prompt:** *„Was sind die Voraussetzungen für eine Schmerzensgeldforderung nach § 253 BGB? Bitte mit Quellenangabe."*
 
@@ -234,7 +234,7 @@ curl -X POST https://lawbster.planitprima.com/mcp \
 
 ## 🛠️ Tools
 
-Acht Tools, alle batch-fähig, alle async, alle zitierfähig. Discovery-Tools liefern kompakte Antworten (~4 k Token), Detail-Tools volle Texte. Standard-Pagination via `count` / `total` / `offset` / `has_more` / `next_offset` / `hint`.
+Neun Tools, alle batch-fähig, alle async, alle zitierfähig. Discovery-Tools liefern kompakte Antworten (~4 k Token), Detail-Tools volle Texte. Standard-Pagination via `count` / `total` / `offset` / `has_more` / `next_offset` / `hint`.
 
 | Tool | Zweck | Kategorie |
 | --- | --- | --- |
@@ -243,6 +243,7 @@ Acht Tools, alle batch-fähig, alle async, alle zitierfähig. Discovery-Tools li
 | [`legal_lookup_batch`](docs/tools-reference.md#legal_lookup_batch) | Bis zu 20 Lookups in einem Call | Detail |
 | [`legal_get_context`](docs/tools-reference.md#legal_get_context) | Umgebende Normen einer Fundstelle | Detail |
 | [`legal_find_citing_decisions`](docs/tools-reference.md#legal_find_citing_decisions) | Bundesgerichtsentscheidungen zu einer Norm | Detail |
+| [`legal_get_materials`](docs/tools-reference.md#legal_get_materials) | Amtliche Gesetzesbegründung (BT-Drucksache) zu einer Norm | Detail |
 | [`legal_list_laws`](docs/tools-reference.md#legal_list_laws) | Verfügbare Gesetze auflisten | Discovery |
 | [`legal_get_toc`](docs/tools-reference.md#legal_get_toc) | Inhaltsverzeichnis eines Gesetzes | Discovery |
 | [`legal_get_stats`](docs/tools-reference.md#legal_get_stats) | Index- und Datenbankstatistiken | Discovery |
@@ -324,16 +325,24 @@ Vorgefertigte Snippets, die deinem KI-Client beibringen, **wann** und **wie** er
 
 | Quelle | Inhalt | Aktualität |
 | --- | --- | --- |
-| **Bundesrecht** | BGB, ZPO, HGB, AktG, GmbHG, StGB, StPO, AO, EStG, KStG, UStG, SGB I–XII, KSchG, ArbZG, MiLoG, AGG, BetrVG, TVG, BDSG, … | Täglich |
+| **Bundesrecht** | BGB, ZPO, HGB, AktG, GmbHG, StGB, StPO, AO, EStG, KStG, UStG, SGB I–XII, KSchG, ArbZG, MiLoG, AGG, BetrVG, TVG, BDSG, … — Gesetze **und** Rechtsverordnungen des Bundes | Täglich |
+| **Landesrecht** | Bayern (gesetze-bayern.de) und Nordrhein-Westfalen (recht.nrw.de) — Landesgesetze & Verordnungen | Täglich |
+| **Bundes-Verwaltungsvorschriften** | Anwendungserlasse, Richtlinien, Durchführungsvorschriften des Bundes (z. B. TA Luft, AEAO) | Täglich |
 | **EU-Recht** | DSGVO, KI-VO, MiCA, DORA, NIS2, DSA, DMA, Data Act, Data Governance Act, Verordnungen, Richtlinien, Beschlüsse | Täglich |
-| **EuGH-Rechtsprechung** | Verfahrensnummern wie `C-311/18`, `T-451/20` | Täglich |
-| **Bundesgerichte** | BGH, BVerfG, BAG, BSG, BPatG, BFH | Täglich |
+| **EuGH-/EuG-Rechtsprechung** | Verfahrensnummern wie `C-311/18`, `T-451/20` | Täglich |
+| **Bundesgerichte (ab 2010)** | BGH, BVerwG, BFH, BAG, BSG, BVerfG, BPatG, GmSOGB | Täglich |
+| **Leitentscheidungen (bis 2009)** | BVerfGE (amtliche Sammlung, inkl. Lüth/Elfes), BVerwG-Urteile | Abgeschlossener Bestand |
+| **Landes-Rechtsprechung** | Sächsisches OVG (Bautzen), NRW-Obergerichte (OVG/OLG/LAG/FG/LSG/VerfGH NRW) | Laufend |
+| **Datenschutz-Guidance** | EDSA/EDPB-Leitlinien & DSK-Beschlüsse — Soft Law zu DSGVO/BDSG | Laufend |
+| **Gesetzesmaterialien** | BT-Drucksachen mit amtlicher Begründung — der „Wille des Gesetzgebers" (Tool `legal_get_materials`) | Täglich |
 
-**Vollständiges deutsches Bundesrecht · vollständiges EU-Recht · Bundesgerichtsentscheidungen · jede Norm einzeln zitierbar.** Alle Inhalte aus amtlichen, frei zugänglichen Quellen — keine Verlagslizenz, keine Drittanbieter-Daten, keine intransparente Lizenzkette.
+**Vollständiges deutsches Bundesrecht · Landesrecht Bayern & NRW · vollständiges EU-Recht · Bundes- und Landesgerichtsentscheidungen · Datenschutz-Guidance · jede Norm einzeln zitierbar.** Alle Inhalte aus amtlichen, frei zugänglichen Quellen — keine Verlagslizenz, keine Drittanbieter-Daten, keine intransparente Lizenzkette.
 
 **Stabiler Reverse-Index:** Welche Norm wurde von welcher Entscheidung zitiert? Treibt das Tool `legal_find_citing_decisions`.
 
-**Was nicht drin ist:** Kommunalrecht, berufsständisches Recht, Lehrmeinungen, Kommentarliteratur, Fachzeitschriften (verlagslizenziert) — Lawbster ist die Basis-Schicht, kombinierbar mit deiner Verlagslizenz.
+**Kostenlos im Web:** Über 235.000 Gesetzes-Seiten zu Bundes- und EU-Recht sind frei und ohne Login auf [lawbster.planitprima.com](https://lawbster.planitprima.com) durchstöberbar — jede Norm mit verlinkter einschlägiger Rechtsprechung und, wo vorhanden, erläuternden Beschreibungen.
+
+**Ist mein Gesetz dabei?** Eine Freitextsuche auf der [Startseite](https://lawbster.planitprima.com) prüft sofort, ob die für dich relevanten Gesetze in Lawbster indexiert sind.
 
 ---
 

@@ -1,6 +1,6 @@
 # Tool-Referenz
 
-Vollständige Referenz für alle acht Lawbster-MCP-Tools — `legal_search`, `legal_lookup`, `legal_lookup_batch`, `legal_get_context`, `legal_find_citing_decisions`, `legal_list_laws`, `legal_get_toc`, `legal_get_stats`.
+Vollständige Referenz für alle neun Lawbster-MCP-Tools — `legal_search`, `legal_lookup`, `legal_lookup_batch`, `legal_get_context`, `legal_find_citing_decisions`, `legal_get_materials`, `legal_list_laws`, `legal_get_toc`, `legal_get_stats`.
 
 Alle Tools sind **batch-fähig**, **async** und liefern **typisierte Result-Objekte** mit Pagination-Feldern (`count`, `total`, `offset`, `has_more`, `next_offset`, `hint`).
 
@@ -11,7 +11,7 @@ Eine bewusste Designentscheidung: **Discovery-Tools** liefern kompakte Antworten
 | Kategorie | Tools | Token-Budget |
 | --- | --- | --- |
 | **Discovery** | `legal_search`, `legal_list_laws`, `legal_get_toc`, `legal_get_stats` | ~4 k |
-| **Detail** | `legal_lookup`, `legal_lookup_batch`, `legal_get_context`, `legal_find_citing_decisions` | Voller Text |
+| **Detail** | `legal_lookup`, `legal_lookup_batch`, `legal_get_context`, `legal_find_citing_decisions`, `legal_get_materials` | Voller Text |
 
 ## Antwort-Konventionen
 
@@ -41,7 +41,7 @@ Lawbster liefert klar typisierte Fehler:
 
 ## `legal_search`
 
-**Hybrid-Suche** über alle Quellen — deutsches Bundesrecht, EU-Recht und Bundesgerichtsentscheidungen.
+**Hybrid-Suche** über alle Quellen — deutsches Bundes- und Landesrecht, EU-Recht, Bundes- und Landesgerichtsentscheidungen sowie Datenschutz-Guidance.
 
 ### Wann nutzen?
 
@@ -58,12 +58,16 @@ Wenn du **bereits ein Zitat hast** (z. B. „§ 823 BGB"), nutze direkt [`legal_
 | Parameter | Typ | Default | Beschreibung |
 | --- | --- | --- | --- |
 | `query` | string | — | Natürlichsprachliche Suchanfrage |
-| `top_k` | int | 5 | Anzahl Treffer |
-| `source_type` | enum | — | `gii`, `eurlex`, `eurlex_caselaw`, `rechtsprechung` |
+| `top_k` | int | 5 | Anzahl Treffer (1–50) |
+| `source_type` | enum | — | Quelle, u. a. `gii` (Bundesrecht), `eurlex` (EU-Recht), `rechtsprechung` (Bundesgerichte), `bayern_gesetze` / `nrw_gesetze` (Landesrecht), `nrw_rechtsprechung` / `sachsen_rechtsprechung` (Landesgerichte), `bverfge` / `bverwg` (Leitentscheidungen bis 2009), `verwaltungsvorschriften`, `edsa` / `dsk` (Datenschutz-Guidance), `gesetzesmaterialien`. Volle Liste: `legal://filter_values` |
+| `jurisdiction` | enum | — | `de` (gesamtes deutsches Recht), `eu`, `de_by` (Bayern), `de_sn` (Sachsen), `de_nw` (NRW) |
+| `document_kind` | enum | — | `statute` / `regulation` / `directive` (Normtext — eine Filterklasse), `decision` (Rechtsprechung), `explanatory_memorandum` (Gesetzesmaterialien), `guidance` (Datenschutz-Guidance) |
 | `law_abbreviation` | string | — | Abkürzung des Gesetzes (z. B. `bgb`, `dsgvo`) |
 | `chapter` | string | — | Kapitel/Abschnitt innerhalb eines Gesetzes (selten nötig — kann Recall reduzieren) |
-| `court` | enum | — | `BGH`, `BVerfG`, `BVerwG`, `BFH`, `BAG`, `BSG`, `BPatG` |
+| `cited_norm` | string | — | Nur Entscheidungen, die diese Norm zitieren (z. B. `§ 573 BGB`, `Art. 6 DSGVO`) — mit fallspezifischer `query` kombinieren (siehe Tipps). Schränkt implizit auf Rechtsprechung ein |
+| `court` | enum | — | Gericht, u. a. `BGH`, `BVerfG`, `BVerwG`, `BAG`, `BSG`, `BFH`, `BPatG`, `EuGH` / `EuG` sowie die Landesgerichte (`Sächsisches OVG`, `Oberverwaltungsgericht NRW`, OLG/LAG/FG/LSG/VerfGH NRW). Volle Liste: `legal://filter_values` |
 | `decision_type` | enum | — | `Urteil` oder `Beschluss` |
+| `language` | enum | `de` | `de` (gesamter Korpus) oder `en` (derzeit nur EDSA/EDPB-Guidance) |
 | `date_from` | ISO date | — | Untergrenze (`YYYY-MM-DD`) |
 | `date_to` | ISO date | — | Obergrenze |
 
@@ -145,6 +149,7 @@ Liefert wahrscheinlich §§ 823, 253 BGB plus einschlägige BGH-Entscheidungen �
 - **Natürliche Sprache schlägt Keyword-Listen.** Schreib Sätze, keine Schlagwortketten. „Welche Pflichten hat ein Verkäufer bei Mängeln?" liefert bessere Treffer als „Mangelhaftung Verkäufer".
 - **Nutze umgangssprachliche Synonyme.** Lawbster kennt typische Confusions (`Cookie` → `Einwilligung Speicherung Informationen Endeinrichtung`, `Kündigung` → `Beendigung Arbeitsverhältnis`).
 - **Filter zuerst.** Wenn du nur EU-Recht brauchst, setz `source_type=eurlex` — sauberere Treffer, schnellere Antwort.
+- **Rechtsprechung zu einer konkreten Norm + Fallfrage: `cited_norm`.** `query="Eigenbedarfskündigung Härtefall hohes Alter"` + `cited_norm="§ 573 BGB"` liefert Entscheidungen, die die Norm anwenden *und* zum Sachverhalt passen — gerankt nach Relevanz. Für die reine Zitier-Liste einer Norm (neueste zuerst) ist [`legal_find_citing_decisions`](#legal_find_citing_decisions) der direkte Weg.
 
 ---
 
@@ -390,6 +395,47 @@ Liefert die zwei Normen vor und drei Normen nach der angegebenen Fundstelle, mit
 
 ---
 
+## `legal_get_materials`
+
+**Amtliche Gesetzesbegründung zu einer Norm** — die Begründungsabschnitte aus der Bundestags-Drucksache, in der die Norm eingeführt oder geändert wurde. Quelle der **genetischen/historischen Auslegung**: *Was wollte der Gesetzgeber?*
+
+### Wann nutzen?
+
+- Wenn es auf den **Zweck** einer Norm ankommt (ratio legis — „warum gibt es diese Regel?")
+- Bedeutung eines unklaren oder undefinierten Begriffs
+- Ob eine Regelungslücke planwidrig ist (begründet eine Analogie) oder bewusstes Schweigen (begründet einen Umkehrschluss)
+- Was eine konkrete Änderung bezwecken sollte
+
+Komplementär zu [`legal_find_citing_decisions`](#legal_find_citing_decisions) (*wie Gerichte* eine Norm anwenden) — hier geht es um die *Absicht des Gesetzgebers* dahinter.
+
+### Parameter
+
+| Parameter | Typ | Default | Beschreibung |
+| --- | --- | --- | --- |
+| `norm` | string | — | Norm wie `§ 823 BGB`, `Art. 87a GG` |
+| `limit` | int | 10 | Maximalzahl Begründungs-Abschnitte (1–50) |
+
+### Beispiel
+
+```json
+{
+  "tool": "legal_get_materials",
+  "arguments": { "norm": "§ 823 BGB" }
+}
+```
+
+### Antwort
+
+Begründungs-Abschnitte, neueste zuerst — jeweils mit `BT-Drs.`-Fundstelle, dem Begründungstext und den weiteren Normen, die dieselbe Änderung betraf (`target_norm_keys`).
+
+### Hinweise
+
+- **Nur deutsches Bundesrecht** (`gesetze-im-internet`-Korpus), Änderungen seit 1949. Eine unbekannte oder nicht-deutsche Norm liefert keine Materialien.
+- **Gewicht:** Die Begründung ist starkes Indiz für den gesetzgeberischen Willen, aber nicht bindend — der Wortlaut bleibt die äußere Grenze jeder Auslegung.
+- **Opt-in:** Eine ungefilterte `legal_search` liefert nie Materialien; für eine konkrete Norm ist dies der direkte Weg.
+
+---
+
 ## `legal_list_laws`
 
 **Listet alle indizierten Gesetze.** Discovery-Tool für die Frage „Was ist überhaupt drin?" — z. B. wenn das LLM unsicher ist, ob die zitierte Spezialnorm Teil des Lawbster-Index ist.
@@ -403,7 +449,7 @@ Liefert die zwei Normen vor und drei Normen nach der angegebenen Fundstelle, mit
 
 | Parameter | Typ | Default | Beschreibung |
 | --- | --- | --- | --- |
-| `source_type` | enum | — | `gii`, `eurlex`, `eurlex_caselaw`, `rechtsprechung` |
+| `source_type` | enum | — | Quelle, u. a. `gii`, `eurlex`, `rechtsprechung`, `bayern_gesetze`, `nrw_gesetze`, `verwaltungsvorschriften` … — volle Liste: `legal://filter_values` |
 | `search` | string | — | Case-insensitive Suche über Abkürzung und Titel (z. B. `bgb`, `datenschutz`) |
 | `limit` | int | 50 | Maximalzahl Treffer pro Seite (1–500) |
 | `offset` | int | 0 | Pagination-Offset |
@@ -478,7 +524,7 @@ Liefert DSGVO, BDSG, TTDSG und weitere.
 | Parameter | Typ | Default | Beschreibung |
 | --- | --- | --- | --- |
 | `law_abbreviation` | string | — | Abkürzung des Gesetzes (z. B. `bgb`, `dsgvo`, `stgb`) |
-| `source_type` | enum | — | Optional. `gii`, `eurlex`, `eurlex_caselaw`, `rechtsprechung`. Leer = Auto-Detect |
+| `source_type` | enum | — | Optional, volle Liste siehe `legal://filter_values`. Leer = Auto-Detect |
 | `offset` | int | 0 | Pagination-Offset |
 | `limit` | int | 100 | Maximalzahl Einträge pro Seite (1–500) |
 

@@ -14,7 +14,7 @@ Then either:
 - Set `LAWBSTER_API_KEY=sk-legal-…` in your shell (the `mcp.json` references `${env:LAWBSTER_API_KEY}`), or
 - Edit `mcp.json` and put the bearer token directly in the `Authorization` header.
 
-Reload Cursor (`Cmd/Ctrl+Shift+P → Reload Window`). The MCP icon shows **Lawbster** with eight tools, and the rule is active in every Composer/Agent session.
+Reload Cursor (`Cmd/Ctrl+Shift+P → Reload Window`). The MCP icon shows **Lawbster** with nine tools, and the rule is active in every Composer/Agent session.
 
 ## What's inside
 
