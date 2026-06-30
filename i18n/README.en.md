@@ -352,7 +352,7 @@ Pre-built snippets that teach your AI client **when** and **how** to use Lawbste
 
 **Versus other legal MCP servers:** production-grade, not a hobby project. Hybrid search with AI reranking ([public benchmark](../docs/benchmarks.md)). Per-seat quota, OAuth + API key, commercial support, daily updates from official sources.
 
-**Versus full-stack legal AI (Harvey, Noxtua):** Lawbster is the **layer underneath** — the citable legal-context provider. Bring your own LLM, bring your own workflow. **Like Context7, but for law.**
+**Versus full-stack legal AI (Harvey, Noxtua):** Lawbster is the **layer underneath** — the citable legal-context provider. Bring your own LLM, bring your own workflow.
 
 ---
 

@@ -352,7 +352,7 @@ Vorgefertigte Snippets, die deinem KI-Client beibringen, **wann** und **wie** er
 
 **Gegenüber anderen Legal-MCP-Servern:** Produktionsreif statt Hobby-Projekt. Hybrid-Suche mit AI-Reranking ([öffentlicher Benchmark](docs/benchmarks.md)). Pro-Seat-Quota, OAuth + API-Key, kommerzieller Support, tägliche Aktualisierung aus amtlichen Quellen.
 
-**Gegenüber Komplett-KI-Lösungen (Harvey, Noxtua):** Lawbster ist die **darunterliegende Schicht** — der zitierfähige Rechtskontext-Provider. Eigenes LLM, eigener Workflow. **Wie Context7, aber für Recht.**
+**Gegenüber Komplett-KI-Lösungen (Harvey, Noxtua):** Lawbster ist die **darunterliegende Schicht** — der zitierfähige Rechtskontext-Provider. Eigenes LLM, eigener Workflow.
 
 ---
 
