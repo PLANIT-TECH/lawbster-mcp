@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write  # OIDC token for npm Trusted Publishing (auth + provenance, no NPM_TOKEN)
+      id-token: write  # provenance attestation (auth itself runs via NPM_TOKEN)
 
     steps:
       - uses: actions/checkout@v4
@@ -29,8 +29,8 @@ jobs:
           cache: "npm"
           cache-dependency-path: packages/primamcp/package-lock.json
 
-      # Trusted Publishing (OIDC) needs npm >= 11.5.1; Node 22 ships an older npm.
-      - name: Upgrade npm for Trusted Publishing
+      # --provenance needs a recent npm; Node 22 ships an older one.
+      - name: Upgrade npm
         run: npm install -g npm@latest
 
       - name: Verify tag matches package version
@@ -56,11 +56,18 @@ jobs:
       - name: Publish (dry-run)
         if: github.event_name == 'workflow_dispatch' && inputs.dry-run
         working-directory: packages/primamcp
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --dry-run --access public
 
-      # Auth + provenance happen automatically via OIDC Trusted Publishing — no NPM_TOKEN.
-      # Prerequisite: a trusted publisher for this repo + workflow is configured on npmjs.com.
+      # Auth runs via the NPM_TOKEN secret, not OIDC: a trusted publisher cannot be
+      # configured for a package that does not exist yet, so the first release of
+      # @planit-tech/primamcp needs a granular access token with read-and-write on
+      # the @planit-tech scope. Once the package exists, configure a trusted
+      # publisher on npmjs.com and this can go back to tokenless OIDC.
       - name: Publish
         if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && !inputs.dry-run)
         working-directory: packages/primamcp
-        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public --provenance
