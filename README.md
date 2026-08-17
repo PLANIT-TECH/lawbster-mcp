@@ -393,7 +393,7 @@ Vorgefertigte Snippets, die deinem KI-Client beibringen, **wann** und **wie** er
 
 Pull Requests an die Doku sind willkommen — Tippfehler, fehlende Beispiele, neue Quickstart-Guides für weitere MCP-Clients. Code-Contributions am npm-Wrapper-Paket (`packages/primamcp/`) ebenfalls.
 
-- **Bug oder Feature-Wunsch:** [GitHub Issues](https://github.com/PLANIT-TECH/primamcp-mcp/issues)
+- **Bug oder Feature-Wunsch:** [GitHub Issues](https://github.com/PLANIT-TECH/primamcp/issues)
 - **Sicherheits-Hinweis:** siehe [SECURITY.md](SECURITY.md)
 - **Support:** `support@planitprima.com`
 

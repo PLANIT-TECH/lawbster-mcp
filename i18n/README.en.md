@@ -393,7 +393,7 @@ Pre-built snippets that teach your AI client **when** and **how** to use PRIMAMC
 
 Documentation pull requests are welcome — typo fixes, missing examples, new quickstart guides for further MCP clients. Code contributions to the npm wrapper package (`packages/primamcp/`) are equally welcome.
 
-- **Bug or feature request:** [GitHub Issues](https://github.com/PLANIT-TECH/primamcp-mcp/issues)
+- **Bug or feature request:** [GitHub Issues](https://github.com/PLANIT-TECH/primamcp/issues)
 - **Security disclosure:** see [SECURITY.md](../SECURITY.md)
 - **Support:** `support@planitprima.com`
 

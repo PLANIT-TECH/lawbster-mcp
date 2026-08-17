@@ -4,7 +4,7 @@ Local MCP bridge for [PRIMAMCP](https://mcp.planitprima.com) — verified, citab
 
 This package is a thin **stdio↔HTTPS bridge**. It runs on your machine, exposes PRIMAMCP as a local stdio MCP server to your client, and forwards every JSON-RPC frame to the hosted endpoint at `https://mcp.planitprima.com/mcp` with your API key. Useful for clients that don't yet support remote HTTP MCP servers natively.
 
-> Most modern clients (Claude Desktop, Cursor, ChatGPT, Claude.ai, Copilot Studio, VS Code) talk Streamable HTTP MCP directly and **don't need this wrapper** — point them at `https://mcp.planitprima.com/mcp` with a Bearer header instead. See the [main README](https://github.com/PLANIT-TECH/primamcp-mcp#readme) for direct-connect snippets.
+> Most modern clients (Claude Desktop, Cursor, ChatGPT, Claude.ai, Copilot Studio, VS Code) talk Streamable HTTP MCP directly and **don't need this wrapper** — point them at `https://mcp.planitprima.com/mcp` with a Bearer header instead. See the [main README](https://github.com/PLANIT-TECH/primamcp#readme) for direct-connect snippets.
 
 ## Install
 
@@ -87,9 +87,9 @@ If your client speaks Streamable HTTP MCP natively, prefer the direct connection
 
 ## Source
 
-- Repo: [github.com/PLANIT-TECH/primamcp-mcp](https://github.com/PLANIT-TECH/primamcp-mcp)
-- License: MIT (see [LICENSE](https://github.com/PLANIT-TECH/primamcp-mcp/blob/main/LICENSE))
-- Bug reports & feature requests: [GitHub Issues](https://github.com/PLANIT-TECH/primamcp-mcp/issues)
+- Repo: [github.com/PLANIT-TECH/primamcp](https://github.com/PLANIT-TECH/primamcp)
+- License: MIT (see [LICENSE](https://github.com/PLANIT-TECH/primamcp/blob/main/LICENSE))
+- Bug reports & feature requests: [GitHub Issues](https://github.com/PLANIT-TECH/primamcp/issues)
 - Security disclosure: `support@planitprima.com`
 
 The hosted PRIMAMCP service itself is closed-source SaaS operated by **PLANIT // TECH GmbH** in Germany.

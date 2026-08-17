@@ -17,11 +17,11 @@
   ],
   "homepage": "https://mcp.planitprima.com",
   "bugs": {
-    "url": "https://github.com/PLANIT-TECH/primamcp-mcp/issues"
+    "url": "https://github.com/PLANIT-TECH/primamcp/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PLANIT-TECH/primamcp-mcp.git",
+    "url": "git+https://github.com/PLANIT-TECH/primamcp.git",
     "directory": "packages/primamcp"
   },
   "license": "MIT",

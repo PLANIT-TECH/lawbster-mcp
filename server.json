@@ -5,7 +5,7 @@
   "description": "Verified, citable German & EU law for any LLM. Daily updates from official sources, hosted in DE.",
   "websiteUrl": "https://mcp.planitprima.com",
   "repository": {
-    "url": "https://github.com/PLANIT-TECH/primamcp-mcp",
+    "url": "https://github.com/PLANIT-TECH/primamcp",
     "source": "github"
   },
   "version": "0.1.0",
