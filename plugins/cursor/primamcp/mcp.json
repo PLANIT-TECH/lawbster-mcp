@@ -1,0 +1,9 @@
+{
+  "primamcp": {
+    "type": "http",
+    "url": "https://mcp.planitprima.com/mcp",
+    "headers": {
+      "Authorization": "Bearer ${env:PRIMAMCP_API_KEY}"
+    }
+  }
+}

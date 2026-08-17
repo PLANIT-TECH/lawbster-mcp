@@ -1,22 +1,22 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.PLANIT-TECH/lawbster",
-  "title": "Lawbster",
+  "name": "io.github.PLANIT-TECH/primamcp",
+  "title": "PRIMAMCP",
   "description": "Verified, citable German & EU law for any LLM. Daily updates from official sources, hosted in DE.",
-  "websiteUrl": "https://lawbster.planitprima.com",
+  "websiteUrl": "https://mcp.planitprima.com",
   "repository": {
-    "url": "https://github.com/PLANIT-TECH/lawbster-mcp",
+    "url": "https://github.com/PLANIT-TECH/primamcp-mcp",
     "source": "github"
   },
   "version": "0.1.0",
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://lawbster.planitprima.com/mcp",
+      "url": "https://mcp.planitprima.com/mcp",
       "headers": [
         {
           "name": "Authorization",
-          "description": "Bearer token in the form 'Bearer sk-legal-...'. Create an API key at https://lawbster.planitprima.com/",
+          "description": "Bearer token in the form 'Bearer sk-legal-...'. Create an API key at https://mcp.planitprima.com/",
           "isRequired": true,
           "isSecret": true
         }

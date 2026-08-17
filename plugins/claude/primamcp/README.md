@@ -1,24 +1,24 @@
-# Lawbster Claude Code Plugin
+# PRIMAMCP Claude Code Plugin
 
-Installs Lawbster — verified, citable German & EU law — as a Claude Code plugin with the `legal-research` skill, the `/lawbster:research` slash command, and the `legal-researcher` agent.
+Installs PRIMAMCP — verified, citable German & EU law — as a Claude Code plugin with the `legal-research` skill, the `/primamcp:research` slash command, and the `legal-researcher` agent.
 
 ## Install
 
 From within Claude Code:
 
 ```
-/plugin install PLANIT-TECH/lawbster-mcp
+/plugin install PLANIT-TECH/primamcp-mcp
 ```
 
-Then either authenticate via the OAuth flow Claude Code will prompt you for, or set `LAWBSTER_API_KEY` (`sk-legal-…`) in your environment if you prefer Bearer auth. Get a key at [lawbster.planitprima.com](https://lawbster.planitprima.com) (14-day free trial, no credit card).
+Then either authenticate via the OAuth flow Claude Code will prompt you for, or set `PRIMAMCP_API_KEY` (`sk-legal-…`) in your environment if you prefer Bearer auth. Get a key at [mcp.planitprima.com](https://mcp.planitprima.com) (14-day free trial, no credit card).
 
 ## What's inside
 
 | Asset | Purpose |
 | --- | --- |
-| `.mcp.json` | Connects Claude Code to `https://lawbster.planitprima.com/mcp` over Streamable HTTP. |
-| `skills/legal-research/SKILL.md` | Skill telling Claude *when* and *how* to use Lawbster — trigger heuristics, 5-step workflow, citation format, integrity rules. |
-| `commands/research.md` | `/lawbster:research` slash command for structured legal research with footnoted citations. |
+| `.mcp.json` | Connects Claude Code to `https://mcp.planitprima.com/mcp` over Streamable HTTP. |
+| `skills/legal-research/SKILL.md` | Skill telling Claude *when* and *how* to use PRIMAMCP — trigger heuristics, 5-step workflow, citation format, integrity rules. |
+| `commands/research.md` | `/primamcp:research` slash command for structured legal research with footnoted citations. |
 | `agents/legal-researcher.md` | Lightweight subagent for delegated legal lookups without cluttering the main conversation. |
 
 ## Tools provided by the underlying MCP server

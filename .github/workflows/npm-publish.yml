@@ -13,7 +13,7 @@ on:
 
 jobs:
   publish:
-    name: Build & publish @planit-lawbster/lawbster-mcp
+    name: Build & publish @planit-tech/primamcp
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -27,7 +27,7 @@ jobs:
           node-version: "22"
           registry-url: "https://registry.npmjs.org"
           cache: "npm"
-          cache-dependency-path: packages/lawbster-mcp/package-lock.json
+          cache-dependency-path: packages/primamcp/package-lock.json
 
       # Trusted Publishing (OIDC) needs npm >= 11.5.1; Node 22 ships an older npm.
       - name: Upgrade npm for Trusted Publishing
@@ -39,28 +39,28 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const pkg = JSON.parse(fs.readFileSync('packages/lawbster-mcp/package.json', 'utf8'));
+            const pkg = JSON.parse(fs.readFileSync('packages/primamcp/package.json', 'utf8'));
             const expected = `refs/tags/v${pkg.version}`;
             if (context.ref !== expected) {
               core.setFailed(`Tag ${context.ref} does not match package.json version ${pkg.version} (expected ${expected}). Bump package.json before tagging.`);
             }
 
       - name: Install
-        working-directory: packages/lawbster-mcp
+        working-directory: packages/primamcp
         run: npm ci
 
       - name: Build
-        working-directory: packages/lawbster-mcp
+        working-directory: packages/primamcp
         run: npm run build
 
       - name: Publish (dry-run)
         if: github.event_name == 'workflow_dispatch' && inputs.dry-run
-        working-directory: packages/lawbster-mcp
+        working-directory: packages/primamcp
         run: npm publish --dry-run --access public
 
       # Auth + provenance happen automatically via OIDC Trusted Publishing — no NPM_TOKEN.
       # Prerequisite: a trusted publisher for this repo + workflow is configured on npmjs.com.
       - name: Publish
         if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && !inputs.dry-run)
-        working-directory: packages/lawbster-mcp
+        working-directory: packages/primamcp
         run: npm publish --access public

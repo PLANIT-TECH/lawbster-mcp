@@ -1,13 +1,13 @@
 {
-  "name": "@planit-lawbster/lawbster-mcp",
-  "version": "0.1.5",
-  "description": "Local MCP bridge for Lawbster — verified, citable German & EU law for any MCP-capable AI assistant. Forwards stdio MCP traffic to https://lawbster.planitprima.com/mcp.",
+  "name": "@planit-tech/primamcp",
+  "version": "0.2.0",
+  "description": "Local MCP bridge for PRIMAMCP — verified, citable German & EU law for any MCP-capable AI assistant. Forwards stdio MCP traffic to https://mcp.planitprima.com/mcp.",
   "keywords": [
     "mcp",
     "model-context-protocol",
     "claude",
     "cursor",
-    "lawbster",
+    "primamcp",
     "legal",
     "german-law",
     "eu-law",
@@ -15,23 +15,23 @@
     "gdpr",
     "dsgvo"
   ],
-  "homepage": "https://lawbster.planitprima.com",
+  "homepage": "https://mcp.planitprima.com",
   "bugs": {
-    "url": "https://github.com/PLANIT-TECH/lawbster-mcp/issues"
+    "url": "https://github.com/PLANIT-TECH/primamcp-mcp/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PLANIT-TECH/lawbster-mcp.git",
-    "directory": "packages/lawbster-mcp"
+    "url": "git+https://github.com/PLANIT-TECH/primamcp-mcp.git",
+    "directory": "packages/primamcp"
   },
   "license": "MIT",
-  "author": "PLANIT // TECH GmbH <support@planitprima.com> (https://lawbster.planitprima.com)",
+  "author": "PLANIT // TECH GmbH <support@planitprima.com> (https://mcp.planitprima.com)",
   "type": "module",
   "engines": {
     "node": ">=18.0.0"
   },
   "bin": {
-    "lawbster-mcp": "dist/index.js"
+    "primamcp": "dist/index.js"
   },
   "files": [
     "dist/",

@@ -1,58 +1,58 @@
 <div align="center">
 
-<a href="https://lawbster.planitprima.com">
-  <img alt="Lawbster — Verifizierter, zitierfähiger Rechtskontext für jeden KI-Assistenten" src="public/cover.png" />
+<a href="https://mcp.planitprima.com">
+  <img alt="PRIMAMCP — Verifizierter, zitierfähiger Rechtskontext für jeden KI-Assistenten" src="public/cover.png" />
 </a>
 
-# Lawbster — Deutsches & EU-Recht für jeden KI-Assistenten
+# PRIMAMCP — Deutsches & EU-Recht für jeden KI-Assistenten
 
 **Verifizierter, zitierfähiger Rechtskontext via [Model Context Protocol](https://modelcontextprotocol.io).**
 Claude · ChatGPT · Cursor · Copilot · jeder MCP-fähige Client.
 
-[![Website](https://img.shields.io/badge/website-lawbster.planitprima.com-0a7c3e?style=flat-square)](https://lawbster.planitprima.com)
-[![NPM](https://img.shields.io/npm/v/@planit-lawbster/lawbster-mcp?style=flat-square&logo=npm)](https://www.npmjs.com/package/@planit-lawbster/lawbster-mcp)
+[![Website](https://img.shields.io/badge/website-mcp.planitprima.com-0a7c3e?style=flat-square)](https://mcp.planitprima.com)
+[![NPM](https://img.shields.io/npm/v/@planit-tech/primamcp?style=flat-square&logo=npm)](https://www.npmjs.com/package/@planit-tech/primamcp)
 [![MCP](https://img.shields.io/badge/protocol-MCP-8a2be2?style=flat-square)](https://modelcontextprotocol.io)
-[![GDPR](https://img.shields.io/badge/compliance-GDPR-005bbb?style=flat-square)](https://lawbster.planitprima.com/datenschutz)
-[![Made in Germany](https://img.shields.io/badge/hosting-Germany%20%F0%9F%87%A9%F0%9F%87%AA-000000?style=flat-square)](https://lawbster.planitprima.com/datenschutz)
+[![GDPR](https://img.shields.io/badge/compliance-GDPR-005bbb?style=flat-square)](https://mcp.planitprima.com/datenschutz)
+[![Made in Germany](https://img.shields.io/badge/hosting-Germany%20%F0%9F%87%A9%F0%9F%87%AA-000000?style=flat-square)](https://mcp.planitprima.com/datenschutz)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow?style=flat-square)](LICENSE)
 
-[**Quickstart**](#-quickstart-in-60-sekunden) · [**Tools**](#-tools) · [**Skills & Rules**](#-skills--rules) · [**Coverage**](#-was-lawbster-abdeckt) · [**English**](i18n/README.en.md)
+[**Quickstart**](#-quickstart-in-60-sekunden) · [**Tools**](#-tools) · [**Skills & Rules**](#-skills--rules) · [**Coverage**](#-was-primamcp-abdeckt) · [**English**](i18n/README.en.md)
 
 </div>
 
 ---
 
-## KI halluziniert bei Rechtsfragen. Lawbster liefert die Fakten.
+## KI halluziniert bei Rechtsfragen. PRIMAMCP liefert die Fakten.
 
-**Ohne Lawbster:**
+**Ohne PRIMAMCP:**
 
 > ❌ "§ 823a BGB regelt die Haftung bei Schmerzensgeld …" *(diesen Paragrafen gibt es nicht)*
 > ❌ "Art. 9 DSGVO erlaubt die Verarbeitung mit Einwilligung — Stand 2023" *(Trainings-Cutoff, ggf. veraltet)*
 > ❌ "Der BGH entschied in VI ZR 999/22 …" *(ausgedachtes Aktenzeichen)*
 
-**Mit Lawbster:**
+**Mit PRIMAMCP:**
 
 > ✅ `§ 253 Abs. 2 BGB` — Volltext, Stand 2024-10-01, Direkt-URL zur amtlichen Quelle
 > ✅ `Art. 9 Abs. 2 lit. a DSGVO` — Volltext mit Hierarchie-Pfad
 > ✅ `BGH VI ZR 175/22` vom 2023-05-15 — Tenor + zitierte Normen
 
-Lawbster ist ein **produktionsreifer MCP-Server**, der KI-Assistenten verifizierten Zugriff auf das deutsche und europäische Recht gibt — täglich aktualisiert aus amtlichen Quellen, durchsuchbar mit dreistufiger Hybrid-Suche, jeder Treffer mit exakter Fundstelle. Stand: **MRR@10 = 0,676** auf dem öffentlichen [GerLeRB-Benchmark](docs/benchmarks.md).
+PRIMAMCP ist ein **produktionsreifer MCP-Server**, der KI-Assistenten verifizierten Zugriff auf das deutsche und europäische Recht gibt — täglich aktualisiert aus amtlichen Quellen, durchsuchbar mit dreistufiger Hybrid-Suche, jeder Treffer mit exakter Fundstelle. Stand: **MRR@10 = 0,676** auf dem öffentlichen [GerLeRB-Benchmark](docs/benchmarks.md).
 
 ---
 
 ## ⚡ Quickstart in 60 Sekunden
 
-**Endpunkt:** `https://lawbster.planitprima.com/mcp` (Streamable HTTP, Bearer-Auth oder OAuth 2.1)
+**Endpunkt:** `https://mcp.planitprima.com/mcp` (Streamable HTTP, Bearer-Auth oder OAuth 2.1)
 
 ```bash
 # Variante 1 — npx-Setup (alle Clients, einfachster Weg)
-npx -y @planit-lawbster/lawbster-mcp setup --client claude
+npx -y @planit-tech/primamcp setup --client claude
 # unterstützt: claude | cursor | vscode | windsurf
 
 # Variante 2 — manueller Eintrag (siehe Client-Sektionen unten)
 ```
 
-**API-Key holen:** [lawbster.planitprima.com](https://lawbster.planitprima.com) → 14 Tage kostenlos testen, keine Kreditkarte. Klartext erscheint **genau einmal** beim Erstellen — direkt in den Client kopieren.
+**API-Key holen:** [mcp.planitprima.com](https://mcp.planitprima.com) → 14 Tage kostenlos testen, keine Kreditkarte. Klartext erscheint **genau einmal** beim Erstellen — direkt in den Client kopieren.
 
 ---
 
@@ -74,9 +74,9 @@ npx -y @planit-lawbster/lawbster-mcp setup --client claude
 ```json
 {
   "mcpServers": {
-    "lawbster": {
+    "primamcp": {
       "type": "http",
-      "url": "https://lawbster.planitprima.com/mcp",
+      "url": "https://mcp.planitprima.com/mcp",
       "headers": {
         "Authorization": "Bearer sk-legal-DEIN-API-KEY"
       }
@@ -85,12 +85,12 @@ npx -y @planit-lawbster/lawbster-mcp setup --client claude
 }
 ```
 
-Claude Desktop **vollständig beenden** (Quit, nicht nur Fenster schließen) und neu öffnen. Das MCP-Icon zeigt jetzt **Lawbster** mit neun Tools.
+Claude Desktop **vollständig beenden** (Quit, nicht nur Fenster schließen) und neu öffnen. Das MCP-Icon zeigt jetzt **PRIMAMCP** mit neun Tools.
 
 **Test-Prompt:** *„Was sind die Voraussetzungen für eine Schmerzensgeldforderung nach § 253 BGB? Bitte mit Quellenangabe."*
 
 **Troubleshooting:**
-- *Lawbster erscheint nicht* → JSON-Syntax prüfen mit `python -m json.tool < claude_desktop_config.json`. Häufiger Fehler: fehlendes Komma zwischen mehreren Servern.
+- *PRIMAMCP erscheint nicht* → JSON-Syntax prüfen mit `python -m json.tool < claude_desktop_config.json`. Häufiger Fehler: fehlendes Komma zwischen mehreren Servern.
 - *401 Unauthorized* → Token-Prefix `sk-legal-` korrekt? Subscription aktiv?
 - *429 Rate-Limit* → 60 Anfragen/Minute pro Seat. Lange Recherche-Sessions können das treffen — zweiten Seat zubuchen oder kurz pausieren.
 
@@ -101,20 +101,20 @@ Claude Desktop **vollständig beenden** (Quit, nicht nur Fenster schließen) und
 
 **Ein-Klick-Install:**
 
-[**🖱️ Add Lawbster to Cursor**](https://cursor.com/install-mcp?name=lawbster&config=eyJ1cmwiOiJodHRwczovL2xhd2JzdGVyLnBsYW5pdHByaW1hLmNvbS9tY3AiLCJoZWFkZXJzIjp7IkF1dGhvcml6YXRpb24iOiJCZWFyZXIgWU9VUl9MQVdCU1RFUl9BUElfS0VZIn19)
+[**🖱️ Add PRIMAMCP to Cursor**](https://cursor.com/install-mcp?name=primamcp&config=eyJ1cmwiOiJodHRwczovL21jcC5wbGFuaXRwcmltYS5jb20vbWNwIiwiaGVhZGVycyI6eyJBdXRob3JpemF0aW9uIjoiQmVhcmVyIFlPVVJfUFJJTUFNQ1BfQVBJX0tFWSJ9fQ)
 
-Nach Klick: API-Key (`sk-legal-…`) im Cursor-Config-Editor anstelle von `YOUR_LAWBSTER_API_KEY` eintragen.
+Nach Klick: API-Key (`sk-legal-…`) im Cursor-Config-Editor anstelle von `YOUR_PRIMAMCP_API_KEY` eintragen.
 
 **Manuell:** `.cursor/mcp.json` im Projekt-Root oder `~/.cursor/mcp.json` global:
 
 ```json
 {
   "mcpServers": {
-    "lawbster": {
+    "primamcp": {
       "type": "http",
-      "url": "https://lawbster.planitprima.com/mcp",
+      "url": "https://mcp.planitprima.com/mcp",
       "headers": {
-        "Authorization": "Bearer ${env:LAWBSTER_TOKEN}"
+        "Authorization": "Bearer ${env:PRIMAMCP_TOKEN}"
       }
     }
   }
@@ -128,7 +128,7 @@ Nach Klick: API-Key (`sk-legal-…`) im Cursor-Config-Editor anstelle von `YOUR_
 - **DSGVO-Compliance-Check** beim Schreiben von Datenverarbeitungs-Code (Art. 6, Art. 9 DSGVO)
 - **KI-VO-Risikoklassifikation** beim Bau von ML-Pipelines
 
-→ Empfohlen: [Cursor-Rule kopieren](rules/cursor.md), damit Cursor Lawbster automatisch bei rechtlichen Fragen nutzt.
+→ Empfohlen: [Cursor-Rule kopieren](rules/cursor.md), damit Cursor PRIMAMCP automatisch bei rechtlichen Fragen nutzt.
 
 </details>
 
@@ -140,44 +140,44 @@ Browser-Clients sprechen MCP nativ über **OAuth 2.1** — kein Code, kein Klart
 **ChatGPT:**
 
 1. **Settings** → **Connectors** → **Add custom connector**
-2. **Name:** `Lawbster`
-3. **MCP Server URL:** `https://lawbster.planitprima.com/mcp`
+2. **Name:** `PRIMAMCP`
+3. **MCP Server URL:** `https://mcp.planitprima.com/mcp`
 4. **Authentication:** *OAuth*
-5. **Save** → Browser-Tab → Lawbster-Login → **Allow**
-6. Im Chat: **Tools**-Dropdown → **Lawbster** aktivieren
+5. **Save** → Browser-Tab → PRIMAMCP-Login → **Allow**
+6. Im Chat: **Tools**-Dropdown → **PRIMAMCP** aktivieren
 
 **Claude.ai:**
 
 1. **Settings** → **Connectors** → **Add custom**
-2. **Name:** `Lawbster`
-3. **Remote MCP server URL:** `https://lawbster.planitprima.com/mcp`
-4. **Sign in** → Lawbster-Login → **Allow**
-5. Im Chat: **Tools-Icon** → Lawbster aktivieren
+2. **Name:** `PRIMAMCP`
+3. **Remote MCP server URL:** `https://mcp.planitprima.com/mcp`
+4. **Sign in** → PRIMAMCP-Login → **Allow**
+5. Im Chat: **Tools-Icon** → PRIMAMCP aktivieren
 
 > 💡 Claude.ai unterstützt auch **MCP Resources** — `legal://rechtsrahmen` und Co. erscheinen als attachable references im Chat.
 
 **Seats und OAuth:** Jedes OAuth-Subject = **ein Seat** (selbe `subject_id`, auch wenn du es in beiden Clients nutzt).
 
-**Custom-GPT-System-Prompt:** Wenn du einen Custom-GPT mit Lawbster baust, kopiere den vorgefertigten [System-Prompt](prompts/chatgpt-custom-gpt.md) — er erzwingt Tool-Nutzung und Citation-Pflicht.
+**Custom-GPT-System-Prompt:** Wenn du einen Custom-GPT mit PRIMAMCP baust, kopiere den vorgefertigten [System-Prompt](prompts/chatgpt-custom-gpt.md) — er erzwingt Tool-Nutzung und Citation-Pflicht.
 
 </details>
 
 <details>
 <summary><b>Copilot Studio</b> (Microsoft 365 / Power Platform / Teams)</summary>
 
-Copilot Studio unterstützt MCP-Server als „Custom Connectors" und zieht — anders als viele andere Clients — **auch Resources**, was für Lawbster (`legal://rechtsrahmen`, `legal://eu_celex_registry`) besonders wertvoll ist.
+Copilot Studio unterstützt MCP-Server als „Custom Connectors" und zieht — anders als viele andere Clients — **auch Resources**, was für PRIMAMCP (`legal://rechtsrahmen`, `legal://eu_celex_registry`) besonders wertvoll ist.
 
 **Pfad A — OAuth (empfohlen):**
 
 1. **Tools** → **Add a tool** → **New tool** → **Model Context Protocol**
-2. **Server URL:** `https://lawbster.planitprima.com/mcp`
+2. **Server URL:** `https://mcp.planitprima.com/mcp`
 3. **Authentication:** *OAuth 2.0*. Endpoints (Authorization-URL, Token-URL, Scopes) bekommst du von uns — Mail an `support@planitprima.com`, wir tragen die Redirect-URI deines Tenants nach.
-4. **Save & Test** → Lawbster-Login → **Allow**
+4. **Save & Test** → PRIMAMCP-Login → **Allow**
 
 **Pfad B — API-Key (Server-to-Server-Bots):**
 
 1. **Tools** → **New tool** → **Model Context Protocol**
-2. **Server URL:** `https://lawbster.planitprima.com/mcp`
+2. **Server URL:** `https://mcp.planitprima.com/mcp`
 3. **Authentication:** *Bearer*
 4. **Token:** `sk-legal-…`
 
@@ -196,9 +196,9 @@ Jeder Client mit Streamable-HTTP-MCP-Support funktioniert. Allgemeines Setup:
 ```jsonc
 {
   "mcpServers": {
-    "lawbster": {
+    "primamcp": {
       "type": "http",
-      "url": "https://lawbster.planitprima.com/mcp",
+      "url": "https://mcp.planitprima.com/mcp",
       "headers": {
         "Authorization": "Bearer sk-legal-DEIN-API-KEY"
       }
@@ -221,7 +221,7 @@ Konfig-Pfad pro Client:
 **Test ohne Client:**
 
 ```bash
-curl -X POST https://lawbster.planitprima.com/mcp \
+curl -X POST https://mcp.planitprima.com/mcp \
   -H "Authorization: Bearer sk-legal-..." \
   -H "Content-Type: application/json" \
   -H "Accept: application/json, text/event-stream" \
@@ -281,7 +281,7 @@ Liefert den exakten Buchstaben mit Hierarchie-Pfad und Stand.
 
 ## 🧩 MCP Resources & Prompts
 
-Neben Tools liefert Lawbster sechs **Resources** und drei **Prompts**.
+Neben Tools liefert PRIMAMCP sechs **Resources** und drei **Prompts**.
 
 ### Resources
 
@@ -308,20 +308,20 @@ Verfügbar in Claude Desktop, Claude.ai, Copilot Studio.
 
 ## 🪄 Skills & Rules
 
-Vorgefertigte Snippets, die deinem KI-Client beibringen, **wann** und **wie** er Lawbster nutzen soll. Copy-paste, fertig.
+Vorgefertigte Snippets, die deinem KI-Client beibringen, **wann** und **wie** er PRIMAMCP nutzen soll. Copy-paste, fertig.
 
 | Asset | Zielsystem | Zweck |
 | --- | --- | --- |
-| [`rules/cursor.md`](rules/cursor.md) | Cursor (`.cursor/rules/`) | Trigger-Rule: bei §, BGB, DSGVO, Urteil → Lawbster aufrufen, immer Citation, nie halluzinieren |
+| [`rules/cursor.md`](rules/cursor.md) | Cursor (`.cursor/rules/`) | Trigger-Rule: bei §, BGB, DSGVO, Urteil → PRIMAMCP aufrufen, immer Citation, nie halluzinieren |
 | [`skills/legal-research/`](skills/legal-research/SKILL.md) | Claude Code | Skill mit YAML-Frontmatter: 5-Schritt-Workflow für saubere Rechtsrecherche |
 | [`prompts/chatgpt-custom-gpt.md`](prompts/chatgpt-custom-gpt.md) | ChatGPT Custom-GPT | System-Prompt + Citation-Pflicht analog Skill |
-| [`prompts/copilot-instructions.md`](prompts/copilot-instructions.md) | GitHub Copilot (`.github/copilot-instructions.md`) | Repo-weite Anweisung: Lawbster für rechtliche Fragen verwenden |
+| [`prompts/copilot-instructions.md`](prompts/copilot-instructions.md) | GitHub Copilot (`.github/copilot-instructions.md`) | Repo-weite Anweisung: PRIMAMCP für rechtliche Fragen verwenden |
 
 > Die mitgelieferten **MCP-Prompts** (`/legal_research`, `/citation_resolve`, `/compare_de_eu`) decken denselben Workflow server-seitig ab — nutze sie in MCP-fähigen Clients (Claude Desktop, Claude.ai, Copilot Studio); die client-seitigen Skills/Rules sind die Variante für Clients ohne native Prompt-Unterstützung.
 
 ---
 
-## 📚 Was Lawbster abdeckt
+## 📚 Was PRIMAMCP abdeckt
 
 | Quelle | Inhalt | Aktualität |
 | --- | --- | --- |
@@ -340,19 +340,19 @@ Vorgefertigte Snippets, die deinem KI-Client beibringen, **wann** und **wie** er
 
 **Stabiler Reverse-Index:** Welche Norm wurde von welcher Entscheidung zitiert? Treibt das Tool `legal_find_citing_decisions`.
 
-**Kostenlos im Web:** Über 235.000 Gesetzes-Seiten zu Bundes- und EU-Recht sind frei und ohne Login auf [lawbster.planitprima.com](https://lawbster.planitprima.com) durchstöberbar — jede Norm mit verlinkter einschlägiger Rechtsprechung und, wo vorhanden, erläuternden Beschreibungen.
+**Kostenlos im Web:** Über 235.000 Gesetzes-Seiten zu Bundes- und EU-Recht sind frei und ohne Login auf [mcp.planitprima.com](https://mcp.planitprima.com) durchstöberbar — jede Norm mit verlinkter einschlägiger Rechtsprechung und, wo vorhanden, erläuternden Beschreibungen.
 
-**Ist mein Gesetz dabei?** Eine Freitextsuche auf der [Startseite](https://lawbster.planitprima.com) prüft sofort, ob die für dich relevanten Gesetze in Lawbster indexiert sind.
+**Ist mein Gesetz dabei?** Eine Freitextsuche auf der [Startseite](https://mcp.planitprima.com) prüft sofort, ob die für dich relevanten Gesetze in PRIMAMCP indexiert sind.
 
 ---
 
-## 🎯 Warum Lawbster?
+## 🎯 Warum PRIMAMCP?
 
-**Gegenüber LLM-Direktnutzung:** Kein Trainings-Cutoff. Exakte Paragrafen statt geraten. Jede Antwort mit Fundstelle. Sauber getrennt zwischen BGB / DSGVO / BGH-Urteilen. KI halluziniert bei Rechtsfragen regelmäßig — mit Lawbster nicht mehr.
+**Gegenüber LLM-Direktnutzung:** Kein Trainings-Cutoff. Exakte Paragrafen statt geraten. Jede Antwort mit Fundstelle. Sauber getrennt zwischen BGB / DSGVO / BGH-Urteilen. KI halluziniert bei Rechtsfragen regelmäßig — mit PRIMAMCP nicht mehr.
 
 **Gegenüber anderen Legal-MCP-Servern:** Produktionsreif statt Hobby-Projekt. Hybrid-Suche mit AI-Reranking ([öffentlicher Benchmark](docs/benchmarks.md)). Pro-Seat-Quota, OAuth + API-Key, kommerzieller Support, tägliche Aktualisierung aus amtlichen Quellen.
 
-**Gegenüber Komplett-KI-Lösungen (Harvey, Noxtua):** Lawbster ist die **darunterliegende Schicht** — der zitierfähige Rechtskontext-Provider. Eigenes LLM, eigener Workflow.
+**Gegenüber Komplett-KI-Lösungen (Harvey, Noxtua):** PRIMAMCP ist die **darunterliegende Schicht** — der zitierfähige Rechtskontext-Provider. Eigenes LLM, eigener Workflow.
 
 ---
 
@@ -366,7 +366,7 @@ Vorgefertigte Snippets, die deinem KI-Client beibringen, **wann** und **wie** er
 - **Pro-Seat-Quota** mit Fair-Use-Limit (60 Anfragen/min)
 - **Stripe für Zahlungsabwicklung** unter EU-US Data Privacy Framework (Art. 45 DSGVO)
 
-→ Verbindliches in **[AGB](https://lawbster.planitprima.com/agb)** und **[Datenschutzerklärung](https://lawbster.planitprima.com/datenschutz)**.
+→ Verbindliches in **[AGB](https://mcp.planitprima.com/agb)** und **[Datenschutzerklärung](https://mcp.planitprima.com/datenschutz)**.
 
 ---
 
@@ -374,7 +374,7 @@ Vorgefertigte Snippets, die deinem KI-Client beibringen, **wann** und **wie** er
 
 **Ein Plan, klare Abrechnung.** **19 € pro Seat / Monat.** 14 Tage kostenlos testen, keine Kreditkarte, jederzeit kündbar. Vollständiger Rechtskorpus inklusive.
 
-→ [lawbster.planitprima.com/pricing](https://lawbster.planitprima.com/pricing)
+→ [mcp.planitprima.com/pricing](https://mcp.planitprima.com/pricing)
 
 ---
 
@@ -391,9 +391,9 @@ Vorgefertigte Snippets, die deinem KI-Client beibringen, **wann** und **wie** er
 
 ## 🤝 Beitrag & Support
 
-Pull Requests an die Doku sind willkommen — Tippfehler, fehlende Beispiele, neue Quickstart-Guides für weitere MCP-Clients. Code-Contributions am npm-Wrapper-Paket (`packages/lawbster-mcp/`) ebenfalls.
+Pull Requests an die Doku sind willkommen — Tippfehler, fehlende Beispiele, neue Quickstart-Guides für weitere MCP-Clients. Code-Contributions am npm-Wrapper-Paket (`packages/primamcp/`) ebenfalls.
 
-- **Bug oder Feature-Wunsch:** [GitHub Issues](https://github.com/PLANIT-TECH/lawbster-mcp/issues)
+- **Bug oder Feature-Wunsch:** [GitHub Issues](https://github.com/PLANIT-TECH/primamcp-mcp/issues)
 - **Sicherheits-Hinweis:** siehe [SECURITY.md](SECURITY.md)
 - **Support:** `support@planitprima.com`
 
@@ -403,14 +403,14 @@ Pull Requests an die Doku sind willkommen — Tippfehler, fehlende Beispiele, ne
 
 Code und Dokumentation in diesem Repo: [MIT License](LICENSE).
 
-Der **Lawbster-Server-Quellcode** ist nicht Open Source — Lawbster ist ein gemanagter SaaS-Dienst, betrieben von **PLANIT // TECH GmbH** in Deutschland.
+Der **PRIMAMCP-Server-Quellcode** ist nicht Open Source — PRIMAMCP ist ein gemanagter SaaS-Dienst, betrieben von **PLANIT // TECH GmbH** in Deutschland.
 
 ---
 
 ## ⚠️ Disclaimer
 
-Lawbster liefert **verifizierte Rechtsinformation**, keine Rechtsberatung im Sinne des RDG. Für eine konkrete Rechtsberatung wende dich an eine Rechtsanwältin oder einen Rechtsanwalt. Treffer aus dem Lawbster-Index ersetzen keine juristische Auswertung im Einzelfall.
+PRIMAMCP liefert **verifizierte Rechtsinformation**, keine Rechtsberatung im Sinne des RDG. Für eine konkrete Rechtsberatung wende dich an eine Rechtsanwältin oder einen Rechtsanwalt. Treffer aus dem PRIMAMCP-Index ersetzen keine juristische Auswertung im Einzelfall.
 
 ---
 
-<sub>© 2026 PLANIT // TECH GmbH · [Impressum](https://lawbster.planitprima.com/impressum) · [Datenschutz](https://lawbster.planitprima.com/datenschutz) · [AGB](https://lawbster.planitprima.com/agb)</sub>
+<sub>© 2026 PLANIT // TECH GmbH · [Impressum](https://mcp.planitprima.com/impressum) · [Datenschutz](https://mcp.planitprima.com/datenschutz) · [AGB](https://mcp.planitprima.com/agb)</sub>

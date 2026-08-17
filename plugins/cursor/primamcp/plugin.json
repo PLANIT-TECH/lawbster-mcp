@@ -1,0 +1,8 @@
+{
+  "name": "primamcp-plugin",
+  "description": "PRIMAMCP server for verified, citable German & EU law. Provides statutes (BGB, GDPR, AI Act, MiCA, NIS2, …) and federal court decisions on demand, with mandatory citation discipline.",
+  "author": {
+    "name": "PLANIT // TECH GmbH",
+    "url": "https://mcp.planitprima.com"
+  }
+}

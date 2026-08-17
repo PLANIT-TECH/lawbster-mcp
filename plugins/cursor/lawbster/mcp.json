@@ -1,9 +1,0 @@
-{
-  "lawbster": {
-    "type": "http",
-    "url": "https://lawbster.planitprima.com/mcp",
-    "headers": {
-      "Authorization": "Bearer ${env:LAWBSTER_API_KEY}"
-    }
-  }
-}

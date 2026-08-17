@@ -1,11 +1,11 @@
-# GitHub Copilot Instructions für Repos mit Lawbster
+# GitHub Copilot Instructions für Repos mit PRIMAMCP
 
-Vorlage für `.github/copilot-instructions.md` in Repos, die Lawbster als MCP-Server nutzen. Copilot Chat liest diese Datei automatisch aus und folgt den Instructions repo-weit.
+Vorlage für `.github/copilot-instructions.md` in Repos, die PRIMAMCP als MCP-Server nutzen. Copilot Chat liest diese Datei automatisch aus und folgt den Instructions repo-weit.
 
 ## Voraussetzungen
 
 - VS Code mit GitHub Copilot Chat
-- Lawbster ist als MCP-Server konfiguriert in `.vscode/mcp.json` oder global (siehe [README → VS Code](../README.md#-setup-pro-client))
+- PRIMAMCP ist als MCP-Server konfiguriert in `.vscode/mcp.json` oder global (siehe [README → VS Code](../README.md#-setup-pro-client))
 
 ## Installation
 
@@ -22,11 +22,11 @@ Inhalt aus dem Block unten einfügen. Die Datei wird automatisch von Copilot Cha
 ````markdown
 # Repo-Instructions für Copilot
 
-Dieses Repo nutzt **Lawbster** (MCP-Server, `https://lawbster.planitprima.com/mcp`) für rechtliche Recherche. Wenn der Nutzer eine rechtliche Frage stellt oder du beim Code-Schreiben auf eine rechtliche Frage stößt, befolge die Regeln unten.
+Dieses Repo nutzt **PRIMAMCP** (MCP-Server, `https://mcp.planitprima.com/mcp`) für rechtliche Recherche. Wenn der Nutzer eine rechtliche Frage stellt oder du beim Code-Schreiben auf eine rechtliche Frage stößt, befolge die Regeln unten.
 
-## Wann Lawbster verwenden
+## Wann PRIMAMCP verwenden
 
-Aktiviere Lawbster bei:
+Aktiviere PRIMAMCP bei:
 
 - Norm-Zitaten: `§`, `Art.`, `Abs.`, `Satz`, `lit.`, Aktenzeichen-Mustern (`VI ZR …`, `1 BvR …`, `C-…/…`)
 - Gesetzes-Abkürzungen: BGB, StGB, HGB, AktG, GmbHG, AO, EStG, KStG, UStG, KSchG, ArbZG, AGG, BetrVG, TVG, BDSG, DSGVO, KI-VO, MiCA, NIS2, DSA, DMA, DORA
@@ -34,10 +34,10 @@ Aktiviere Lawbster bei:
 - Compliance-relevanten Code-Stellen: Verarbeitung personenbezogener Daten, Vertragsbedingungen, AGB-Generierung, KI-Pipelines, Auftragsverarbeitung, Drittlandübermittlung
 - Compliance-Begriffen im Prompt: "rechtlich zulässig", "darf ich", "Pflicht", "haftbar", "kündbar", "Abmahnung", "Widerruf", "Einwilligung"
 
-## Wie Lawbster verwenden
+## Wie PRIMAMCP verwenden
 
 1. **Tool-Priorität.** Bei jedem Trigger zuerst `legal_search` (thematisch) oder `legal_lookup` (Zitat bekannt) aufrufen — nie aus Allgemeinwissen antworten.
-2. **Auch bekannte Normen verifizieren** — Lawbster ist tagesaktuell, das Trainings-Wissen nicht.
+2. **Auch bekannte Normen verifizieren** — PRIMAMCP ist tagesaktuell, das Trainings-Wissen nicht.
 3. **Norm → Rechtsprechung.** Für jede zentrale Norm zusätzlich `legal_find_citing_decisions(cited_norm="<Norm>")` aufrufen, um die einschlägige BGH/BVerfG-Auslegung zu prüfen.
 4. **Bei mehreren Lookups** `legal_lookup_batch` (bis zu 20 Zitate gleichzeitig).
 5. **Filter setzen**, wenn Jurisdiktion bekannt: `source_type='gii'` (DE-Bundesrecht), `source_type='eurlex'` (EU), `source_type='rechtsprechung'` (DE-Bundesgerichte), `source_type='eurlex_caselaw'` (EuGH).
@@ -64,17 +64,17 @@ Jede rechtliche Aussage in einer Antwort oder einem Code-Comment **mit Fundstell
 
 - ❌ Antworten auf rechtliche Fragen aus dem Trainings-Wissen ohne Tool-Use
 - ❌ Aktenzeichen, ECLI oder Datumsangaben erfinden, wenn `legal_lookup` `found=false` liefert
-- ❌ Code-Comments mit "ist DSGVO-konform" ohne Lawbster-Verifizierung
+- ❌ Code-Comments mit "ist DSGVO-konform" ohne PRIMAMCP-Verifizierung
 - ❌ AGB-Klauseln generieren, ohne vorher die einschlägigen BGB-Normen zu verifizieren
-- ❌ Im Zweifel raten — stattdessen ehrlich sagen "Lawbster liefert dazu keinen Treffer"
+- ❌ Im Zweifel raten — stattdessen ehrlich sagen "PRIMAMCP liefert dazu keinen Treffer"
 
-## Wenn Lawbster nichts findet
+## Wenn PRIMAMCP nichts findet
 
-Sag es transparent: *"Lawbster indexiert nur Bundesrecht, EU-Recht und Bundesgerichtsentscheidungen — für [Domain] ist eine andere Quelle nötig."* Nicht mit Trainings-Wissen kompensieren.
+Sag es transparent: *"PRIMAMCP indexiert nur Bundesrecht, EU-Recht und Bundesgerichtsentscheidungen — für [Domain] ist eine andere Quelle nötig."* Nicht mit Trainings-Wissen kompensieren.
 
 ## Disclaimer
 
-Lawbster liefert verifizierte Rechtsinformation, keine Rechtsberatung im Sinne des RDG. Bei konkreten Rechtsfragen Hinweis auf Anwalt/Anwältin geben.
+PRIMAMCP liefert verifizierte Rechtsinformation, keine Rechtsberatung im Sinne des RDG. Bei konkreten Rechtsfragen Hinweis auf Anwalt/Anwältin geben.
 ````
 
 ## Optional: Workspace-spezifische Erweiterungen
@@ -124,4 +124,4 @@ Bei jeder Änderung an ML-Pipelines:
 - **`.github/instructions/*.instructions.md`** — datei-/sprach-spezifische Instructions (z.B. nur für Python-Files)
 - **`.github/prompts/*.prompt.md`** — wiederverwendbare Slash-Commands für Copilot Chat
 
-Die Lawbster-Logik ist repo-weit relevant und gehört in die Haupt-`copilot-instructions.md`. Spezialisierte Sprach-Hinweise (z.B. "in dieser Python-Codebase werden Type-Hints erzwungen") gehören in eigene `instructions/`-Files.
+Die PRIMAMCP-Logik ist repo-weit relevant und gehört in die Haupt-`copilot-instructions.md`. Spezialisierte Sprach-Hinweise (z.B. "in dieser Python-Codebase werden Type-Hints erzwungen") gehören in eigene `instructions/`-Files.

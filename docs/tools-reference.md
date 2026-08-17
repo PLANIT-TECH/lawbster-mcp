@@ -1,6 +1,6 @@
 # Tool-Referenz
 
-Vollständige Referenz für alle neun Lawbster-MCP-Tools — `legal_search`, `legal_lookup`, `legal_lookup_batch`, `legal_get_context`, `legal_find_citing_decisions`, `legal_get_materials`, `legal_list_laws`, `legal_get_toc`, `legal_get_stats`.
+Vollständige Referenz für alle neun PRIMAMCP-Tools — `legal_search`, `legal_lookup`, `legal_lookup_batch`, `legal_get_context`, `legal_find_citing_decisions`, `legal_get_materials`, `legal_list_laws`, `legal_get_toc`, `legal_get_stats`.
 
 Alle Tools sind **batch-fähig**, **async** und liefern **typisierte Result-Objekte** mit Pagination-Feldern (`count`, `total`, `offset`, `has_more`, `next_offset`, `hint`).
 
@@ -30,7 +30,7 @@ Plus tool-spezifische Felder (`hits`, `norm`, `decisions`, `laws`, `toc`, `stats
 
 ## Fehler
 
-Lawbster liefert klar typisierte Fehler:
+PRIMAMCP liefert klar typisierte Fehler:
 
 - **Ungültiges Zitat-Format** in `legal_lookup` / `legal_lookup_batch` → klare Fehlermeldung mit Hinweis auf akzeptierte Formate
 - **Norm nicht im Index** → Tool gibt `{ "found": false, "citation": "..." }` zurück
@@ -51,7 +51,7 @@ Lawbster liefert klar typisierte Fehler:
 
 Wenn du **bereits ein Zitat hast** (z. B. „§ 823 BGB"), nutze direkt [`legal_lookup`](#legal_lookup) — schneller, präziser, billiger.
 
-→ [Wie Lawbster sucht](architecture.md)
+→ [Wie PRIMAMCP sucht](architecture.md)
 
 ### Parameter
 
@@ -147,7 +147,7 @@ Liefert wahrscheinlich §§ 823, 253 BGB plus einschlägige BGH-Entscheidungen �
 ### Tipps
 
 - **Natürliche Sprache schlägt Keyword-Listen.** Schreib Sätze, keine Schlagwortketten. „Welche Pflichten hat ein Verkäufer bei Mängeln?" liefert bessere Treffer als „Mangelhaftung Verkäufer".
-- **Nutze umgangssprachliche Synonyme.** Lawbster kennt typische Confusions (`Cookie` → `Einwilligung Speicherung Informationen Endeinrichtung`, `Kündigung` → `Beendigung Arbeitsverhältnis`).
+- **Nutze umgangssprachliche Synonyme.** PRIMAMCP kennt typische Confusions (`Cookie` → `Einwilligung Speicherung Informationen Endeinrichtung`, `Kündigung` → `Beendigung Arbeitsverhältnis`).
 - **Filter zuerst.** Wenn du nur EU-Recht brauchst, setz `source_type=eurlex` — sauberere Treffer, schnellere Antwort.
 - **Rechtsprechung zu einer konkreten Norm + Fallfrage: `cited_norm`.** `query="Eigenbedarfskündigung Härtefall hohes Alter"` + `cited_norm="§ 573 BGB"` liefert Entscheidungen, die die Norm anwenden *und* zum Sachverhalt passen — gerankt nach Relevanz. Für die reine Zitier-Liste einer Norm (neueste zuerst) ist [`legal_find_citing_decisions`](#legal_find_citing_decisions) der direkte Weg.
 
@@ -165,7 +165,7 @@ Liefert wahrscheinlich §§ 823, 253 BGB plus einschlägige BGH-Entscheidungen �
 
 ### Akzeptierte Zitierformen
 
-Lawbsters Citation-Parser akzeptiert die in deutscher und EU-Rechtspraxis üblichen Formen:
+Der Citation-Parser von PRIMAMCP akzeptiert die in deutscher und EU-Rechtspraxis üblichen Formen:
 
 | Form | Beispiel |
 | --- | --- |
@@ -438,7 +438,7 @@ Begründungs-Abschnitte, neueste zuerst — jeweils mit `BT-Drs.`-Fundstelle, de
 
 ## `legal_list_laws`
 
-**Listet alle indizierten Gesetze.** Discovery-Tool für die Frage „Was ist überhaupt drin?" — z. B. wenn das LLM unsicher ist, ob die zitierte Spezialnorm Teil des Lawbster-Index ist.
+**Listet alle indizierten Gesetze.** Discovery-Tool für die Frage „Was ist überhaupt drin?" — z. B. wenn das LLM unsicher ist, ob die zitierte Spezialnorm Teil des PRIMAMCP-Index ist.
 
 ### Wann nutzen?
 
@@ -555,7 +555,7 @@ Antwort enthält Norm-Schlüssel, Titel und Hierarchie pro Eintrag — das LLM k
 
 ### Wann nutzen?
 
-- Bots, die ihren Datenstand transparent machen wollen („Stand: Lawbster 2026-04-29, X Gesetze")
+- Bots, die ihren Datenstand transparent machen wollen („Stand: PRIMAMCP 2026-04-29, X Gesetze")
 - Coverage-Reports für Compliance-Audits
 - Health-Checks in Monitoring-Pipelines
 

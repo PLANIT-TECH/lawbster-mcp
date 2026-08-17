@@ -24,8 +24,8 @@ SOFTWARE.
 
 Note: This license applies to the contents of this repository (documentation,
 client snippets/rules/skills, and the npm wrapper package source code at
-`packages/lawbster-mcp/`).
+`packages/primamcp/`).
 
-The Lawbster server itself (running at https://lawbster.planitprima.com/mcp)
+The PRIMAMCP server itself (running at https://mcp.planitprima.com/mcp)
 is a managed SaaS service operated by PLANIT // TECH GmbH; its server source
 code is not open source and is not covered by this license.

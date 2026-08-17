@@ -1,20 +1,20 @@
 {
-  "name": "lawbster",
+  "name": "primamcp",
   "description": "Verified, citable German & EU law for any LLM. Daily updates from official sources, hosted in Germany.",
   "version": "1.0.0",
   "settings": [
     {
       "name": "API Key",
-      "description": "Lawbster API key (sk-legal-…). Create one at https://lawbster.planitprima.com (14-day free trial, no credit card).",
-      "envVar": "LAWBSTER_API_KEY"
+      "description": "PRIMAMCP API key (sk-legal-…). Create one at https://mcp.planitprima.com (14-day free trial, no credit card).",
+      "envVar": "PRIMAMCP_API_KEY"
     }
   ],
   "mcpServers": {
-    "lawbster": {
+    "primamcp": {
       "command": "npx",
-      "args": ["-y", "@planit-lawbster/lawbster-mcp"],
+      "args": ["-y", "@planit-tech/primamcp"],
       "env": {
-        "LAWBSTER_API_KEY": "${LAWBSTER_API_KEY}"
+        "PRIMAMCP_API_KEY": "${PRIMAMCP_API_KEY}"
       }
     }
   }

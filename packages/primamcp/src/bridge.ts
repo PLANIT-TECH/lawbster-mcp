@@ -1,7 +1,7 @@
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 
-const DEFAULT_ENDPOINT = "https://lawbster.planitprima.com/mcp";
+const DEFAULT_ENDPOINT = "https://mcp.planitprima.com/mcp";
 
 export interface BridgeOptions {
   endpoint?: string;
@@ -9,13 +9,13 @@ export interface BridgeOptions {
 }
 
 export async function runBridge(options: BridgeOptions = {}): Promise<void> {
-  const endpoint = options.endpoint ?? process.env.LAWBSTER_MCP_URL ?? DEFAULT_ENDPOINT;
-  const apiKey = options.apiKey ?? process.env.LAWBSTER_API_KEY;
+  const endpoint = options.endpoint ?? process.env.PRIMAMCP_MCP_URL ?? DEFAULT_ENDPOINT;
+  const apiKey = options.apiKey ?? process.env.PRIMAMCP_API_KEY;
 
   if (!apiKey) {
     process.stderr.write(
-      "lawbster-mcp: missing API key. Set LAWBSTER_API_KEY (env) or pass --api-key.\n" +
-      "             Get a key at https://lawbster.planitprima.com (14-day free trial).\n"
+      "primamcp: missing API key. Set PRIMAMCP_API_KEY (env) or pass --api-key.\n" +
+      "             Get a key at https://mcp.planitprima.com (14-day free trial).\n"
     );
     process.exit(1);
   }
@@ -34,12 +34,12 @@ export async function runBridge(options: BridgeOptions = {}): Promise<void> {
   // without code changes here.
   local.onmessage = (msg) => {
     upstream.send(msg).catch((err: unknown) => {
-      process.stderr.write(`lawbster-mcp: upstream send failed: ${formatError(err)}\n`);
+      process.stderr.write(`primamcp: upstream send failed: ${formatError(err)}\n`);
     });
   };
   upstream.onmessage = (msg) => {
     local.send(msg).catch((err: unknown) => {
-      process.stderr.write(`lawbster-mcp: local send failed: ${formatError(err)}\n`);
+      process.stderr.write(`primamcp: local send failed: ${formatError(err)}\n`);
     });
   };
 
@@ -53,10 +53,10 @@ export async function runBridge(options: BridgeOptions = {}): Promise<void> {
     void closeBoth().finally(() => process.exit(0));
   };
   local.onerror = (err) => {
-    process.stderr.write(`lawbster-mcp: local transport error: ${formatError(err)}\n`);
+    process.stderr.write(`primamcp: local transport error: ${formatError(err)}\n`);
   };
   upstream.onerror = (err) => {
-    process.stderr.write(`lawbster-mcp: upstream transport error: ${formatError(err)}\n`);
+    process.stderr.write(`primamcp: upstream transport error: ${formatError(err)}\n`);
   };
 
   process.on("SIGINT", () => {

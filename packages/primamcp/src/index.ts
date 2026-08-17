@@ -14,10 +14,10 @@ const SUPPORTED_CLIENTS: readonly SupportedClient[] = ["claude", "cursor", "vsco
 const program = new Command();
 
 program
-  .name("lawbster-mcp")
+  .name("primamcp")
   .description(
-    "Local MCP bridge for Lawbster — verified, citable German & EU law for any MCP-capable AI assistant. " +
-    "Forwards stdio MCP traffic to https://lawbster.planitprima.com/mcp.",
+    "Local MCP bridge for PRIMAMCP — verified, citable German & EU law for any MCP-capable AI assistant. " +
+    "Forwards stdio MCP traffic to https://mcp.planitprima.com/mcp.",
   )
   .version(PKG_VERSION);
 
@@ -26,11 +26,11 @@ program
   .description("Run the stdio↔HTTPS bridge (default). Used by MCP clients that spawn this binary.")
   .option(
     "--api-key <key>",
-    "Lawbster API key (sk-legal-…). Falls back to LAWBSTER_API_KEY env var.",
+    "PRIMAMCP API key (sk-legal-…). Falls back to PRIMAMCP_API_KEY env var.",
   )
   .option(
     "--endpoint <url>",
-    "MCP endpoint URL. Defaults to https://lawbster.planitprima.com/mcp; override via LAWBSTER_MCP_URL env.",
+    "MCP endpoint URL. Defaults to https://mcp.planitprima.com/mcp; override via PRIMAMCP_MCP_URL env.",
   )
   .action(async (opts: { apiKey?: string; endpoint?: string }) => {
     try {
@@ -39,25 +39,25 @@ program
         endpoint: opts.endpoint,
       });
     } catch (err) {
-      process.stderr.write(`lawbster-mcp: bridge failed to start: ${formatError(err)}\n`);
+      process.stderr.write(`primamcp: bridge failed to start: ${formatError(err)}\n`);
       process.exit(1);
     }
   });
 
 program
   .command("setup")
-  .description("Write a Lawbster MCP server entry into a client's config file.")
+  .description("Write a PRIMAMCP server entry into a client's config file.")
   .requiredOption(
     "--client <name>",
     `Target client. One of: ${SUPPORTED_CLIENTS.join(", ")}.`,
   )
   .option(
     "--api-key <key>",
-    "Lawbster API key (sk-legal-…). Falls back to LAWBSTER_API_KEY env var.",
+    "PRIMAMCP API key (sk-legal-…). Falls back to PRIMAMCP_API_KEY env var.",
   )
   .option(
     "--endpoint <url>",
-    "MCP endpoint URL. Defaults to https://lawbster.planitprima.com/mcp.",
+    "MCP endpoint URL. Defaults to https://mcp.planitprima.com/mcp.",
   )
   .option(
     "--scope <scope>",
@@ -73,21 +73,21 @@ program
   }) => {
     if (!isSupportedClient(opts.client)) {
       process.stderr.write(
-        `lawbster-mcp: unsupported --client '${opts.client}'. ` +
+        `primamcp: unsupported --client '${opts.client}'. ` +
         `Use one of: ${SUPPORTED_CLIENTS.join(", ")}.\n`,
       );
       process.exit(2);
     }
     if (opts.scope !== "global" && opts.scope !== "project") {
-      process.stderr.write(`lawbster-mcp: --scope must be 'global' or 'project'.\n`);
+      process.stderr.write(`primamcp: --scope must be 'global' or 'project'.\n`);
       process.exit(2);
     }
 
-    const apiKey = opts.apiKey ?? process.env.LAWBSTER_API_KEY;
+    const apiKey = opts.apiKey ?? process.env.PRIMAMCP_API_KEY;
     if (!apiKey) {
       process.stderr.write(
-        "lawbster-mcp: missing API key. Pass --api-key sk-legal-… or set LAWBSTER_API_KEY.\n" +
-        "             Get a key at https://lawbster.planitprima.com (14-day free trial).\n",
+        "primamcp: missing API key. Pass --api-key sk-legal-… or set PRIMAMCP_API_KEY.\n" +
+        "             Get a key at https://mcp.planitprima.com (14-day free trial).\n",
       );
       process.exit(2);
     }
@@ -106,13 +106,13 @@ program
         nextStepHint(result.client),
       );
     } catch (err) {
-      process.stderr.write(`lawbster-mcp: setup failed: ${formatError(err)}\n`);
+      process.stderr.write(`primamcp: setup failed: ${formatError(err)}\n`);
       process.exit(1);
     }
   });
 
 program.parseAsync(process.argv).catch((err: unknown) => {
-  process.stderr.write(`lawbster-mcp: ${formatError(err)}\n`);
+  process.stderr.write(`primamcp: ${formatError(err)}\n`);
   process.exit(1);
 });
 

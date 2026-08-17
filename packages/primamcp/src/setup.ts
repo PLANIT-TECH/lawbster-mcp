@@ -20,8 +20,8 @@ export interface SetupResult {
   serverName: string;
 }
 
-const DEFAULT_ENDPOINT = "https://lawbster.planitprima.com/mcp";
-const SERVER_NAME = "lawbster";
+const DEFAULT_ENDPOINT = "https://mcp.planitprima.com/mcp";
+const SERVER_NAME = "primamcp";
 
 export function runSetup(options: SetupOptions): SetupResult {
   const endpoint = options.endpoint ?? DEFAULT_ENDPOINT;

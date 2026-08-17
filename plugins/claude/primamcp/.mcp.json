@@ -1,0 +1,6 @@
+{
+  "primamcp": {
+    "type": "http",
+    "url": "https://mcp.planitprima.com/mcp"
+  }
+}

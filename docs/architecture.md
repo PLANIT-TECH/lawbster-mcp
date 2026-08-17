@@ -1,6 +1,6 @@
 # Architektur & Suchpipeline
 
-Eine reine Volltext-Suche scheitert an juristischer Sprache: „Schuldrecht" steht nicht in jedem Paragrafen, der Schuldrecht regelt. Eine reine semantische Suche scheitert an Spezialbegriffen wie „Wegerecht" oder „Altenteil", die exakt erkannt werden müssen. **Lawbster kombiniert beides** und schaltet einen **AI-Reranking-Schritt** dahinter, der die Top-Treffer noch einmal prüft, bevor sie an den Bot zurückgehen.
+Eine reine Volltext-Suche scheitert an juristischer Sprache: „Schuldrecht" steht nicht in jedem Paragrafen, der Schuldrecht regelt. Eine reine semantische Suche scheitert an Spezialbegriffen wie „Wegerecht" oder „Altenteil", die exakt erkannt werden müssen. **PRIMAMCP kombiniert beides** und schaltet einen **AI-Reranking-Schritt** dahinter, der die Top-Treffer noch einmal prüft, bevor sie an den Bot zurückgehen.
 
 ## Drei Stufen
 
@@ -10,7 +10,7 @@ Eine reine Volltext-Suche scheitert an juristischer Sprache: „Schuldrecht" ste
 
 ## Filter wirken bereits in Stufe 1 + 2
 
-Wenn ein Bot `jurisdiction=eu` setzt, sucht Lawbster gar nicht erst im deutschen Bundesrecht. Das verkleinert den Suchraum, beschleunigt die Antwort und schließt Falschtreffer aus.
+Wenn ein Bot `jurisdiction=eu` setzt, sucht PRIMAMCP gar nicht erst im deutschen Bundesrecht. Das verkleinert den Suchraum, beschleunigt die Antwort und schließt Falschtreffer aus.
 
 ## Verifizierte Fundstellen, nicht nur „passt-vermutlich"
 
@@ -26,19 +26,19 @@ Damit kann das LLM jede Aussage mit Fundstelle untermauern — und Anwender kön
 
 ## Qualität messbar
 
-Auf dem öffentlichen [GerLeRB-Benchmark](benchmarks.md) erreicht Lawbster **MRR@10 = 0,676**. Das ist Mehrwert, der sich rechnen lässt: in der Praxis findet das Modell die richtige Norm in den meisten Fällen unter den ersten zwei oder drei Treffern, statt dass das LLM sich durch zehn falsche durcharbeiten muss.
+Auf dem öffentlichen [GerLeRB-Benchmark](benchmarks.md) erreicht PRIMAMCP **MRR@10 = 0,676**. Das ist Mehrwert, der sich rechnen lässt: in der Praxis findet das Modell die richtige Norm in den meisten Fällen unter den ersten zwei oder drei Treffern, statt dass das LLM sich durch zehn falsche durcharbeiten muss.
 
 ## Was nicht passieren darf
 
-**Halluzinationen.** Treffer kommen ausschließlich aus dem indexierten Bestand — Lawbster generiert keine Norm-Texte, sondern liefert die im Index vorhandenen Stellen. Wenn keine passende Norm gefunden wird, gibt das Tool das auch so zurück, statt etwas zu erfinden.
+**Halluzinationen.** Treffer kommen ausschließlich aus dem indexierten Bestand — PRIMAMCP generiert keine Norm-Texte, sondern liefert die im Index vorhandenen Stellen. Wenn keine passende Norm gefunden wird, gibt das Tool das auch so zurück, statt etwas zu erfinden.
 
-**Veraltete Daten.** Lawbster aktualisiert sich täglich. Eine Gesetzesänderung von vorgestern ist heute im Index.
+**Veraltete Daten.** PRIMAMCP aktualisiert sich täglich. Eine Gesetzesänderung von vorgestern ist heute im Index.
 
 **Stille Qualitätsverluste.** Jede Änderung am Suchverfahren wird gegen den Benchmark validiert, bevor sie live geht.
 
 ## Datenquellen
 
-Lawbster speist sich ausschließlich aus **amtlichen, frei zugänglichen Quellen**. Keine Drittanbieter-Daten, keine Verlagslizenz nötig, keine intransparente Lizenzkette.
+PRIMAMCP speist sich ausschließlich aus **amtlichen, frei zugänglichen Quellen**. Keine Drittanbieter-Daten, keine Verlagslizenz nötig, keine intransparente Lizenzkette.
 
 | Quelle | Inhalt | Aktualität |
 | --- | --- | --- |

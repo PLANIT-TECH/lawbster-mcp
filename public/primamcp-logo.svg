@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-660 -18 1580 136" role="img" aria-label="PLANIT // PRIMAMCP">
+  <!-- Hausmarke, heller Grund. Variante 01 "Gewicht": PRIMA in 300, MCP in 800 -
+       eine Farbe, ein Schnitt, der Kontrast traegt allein ueber die Strichstaerke.
+       Koordinatensystem: Versalhoehe 100, Grundlinie y=100, Doppelstrich auf x=0 zentriert.
+       Die Schraegen sind massstabsgetreu aus dem alten Illustrator-Logo uebernommen
+       (Cap-Height 472.02 -> 100), die Schrift ist live und nicht in Pfade konvertiert.
+       Fallback-Schriften ohne 300/800 klappen auf 400/700 zusammen - der Kontrast
+       wird dann schwaecher, bricht aber nicht. -->
+  <g fill="#a5f4b2">
+    <polygon points="-46.65,100 -27.57,100 -0.65,0 -19.73,0"/>
+    <polygon points="0.65,100 19.73,100 46.65,0 27.57,0"/>
+  </g>
+  <g fill="#001489" font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+     font-size="137.5" letter-spacing="1.4">
+    <text x="-88" y="100" text-anchor="end" font-weight="700">PLANIT</text>
+    <text x="92" y="100"><tspan font-weight="300">PRIMA</tspan><tspan font-weight="800">MCP</tspan></text>
+  </g>
+</svg>

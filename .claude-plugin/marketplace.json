@@ -1,13 +1,13 @@
 {
-  "name": "lawbster-marketplace",
+  "name": "primamcp-marketplace",
   "owner": {
     "name": "PLANIT // TECH GmbH"
   },
   "plugins": [
     {
-      "name": "lawbster-plugin",
-      "source": "./plugins/claude/lawbster",
-      "description": "Lawbster MCP server for verified, citable German & EU law. Pull statutes (BGB, GDPR, AI Act, …) and federal court decisions directly into your LLM context — daily updates from official sources.",
+      "name": "primamcp-plugin",
+      "source": "./plugins/claude/primamcp",
+      "description": "PRIMAMCP server for verified, citable German & EU law. Pull statutes (BGB, GDPR, AI Act, …) and federal court decisions directly into your LLM context — daily updates from official sources.",
       "version": "1.0.0"
     }
   ]

@@ -1,19 +1,19 @@
-# ChatGPT-Custom-GPT mit Lawbster
+# ChatGPT-Custom-GPT mit PRIMAMCP
 
-Vorlage für einen **ChatGPT-Custom-GPT**, der Lawbster als MCP-Connector / Action nutzt und sich strikt an Citation-Pflicht und Tool-Use hält.
+Vorlage für einen **ChatGPT-Custom-GPT**, der PRIMAMCP als MCP-Connector / Action nutzt und sich strikt an Citation-Pflicht und Tool-Use hält.
 
 ## Voraussetzungen
 
 - **ChatGPT Pro / Team / Enterprise** (Custom-GPT- und Connector-Funktionalität)
-- Lawbster-Account → [14 Tage kostenlos](https://lawbster.planitprima.com/pricing)
+- PRIMAMCP-Account → [14 Tage kostenlos](https://mcp.planitprima.com/pricing)
 - Custom-GPT-Editor offen (Explore GPTs → Create)
 
 ## Schritt 1 — Connector hinzufügen
 
 Im **Configure**-Tab des GPT-Builders:
 
-1. **Knowledge / Actions / Connectors** → Lawbster als MCP-Connector hinzufügen
-2. **MCP Server URL:** `https://lawbster.planitprima.com/mcp`
+1. **Knowledge / Actions / Connectors** → PRIMAMCP als MCP-Connector hinzufügen
+2. **MCP Server URL:** `https://mcp.planitprima.com/mcp`
 3. **Authentication:** *OAuth* (empfohlen) oder *API-Key* (`sk-legal-…`) für Server-to-Server-Setups
 
 Details siehe [README → Setup pro Client → ChatGPT](../README.md#-setup-pro-client).
@@ -27,7 +27,7 @@ Folgenden Block in das **Instructions**-Feld des Custom-GPT-Editors kopieren. An
 ```
 # Rolle
 
-Du bist [GPT-Name], ein juristischer Recherche-Assistent mit Zugriff auf den Lawbster-MCP-Connector. Lawbster gibt dir verifizierten Zugriff auf das deutsche Bundesrecht, EU-Recht und die Entscheidungen der deutschen Bundesgerichte — täglich aktualisiert aus amtlichen Quellen.
+Du bist [GPT-Name], ein juristischer Recherche-Assistent mit Zugriff auf den PRIMAMCP-Connector. PRIMAMCP gibt dir verifizierten Zugriff auf das deutsche Bundesrecht, EU-Recht und die Entscheidungen der deutschen Bundesgerichte — täglich aktualisiert aus amtlichen Quellen.
 
 [Optional: spezialisierter Fokus, z.B. "Du fokussierst auf Datenschutz- und KI-VO-Compliance." oder "Du fokussierst auf deutsches Arbeitsrecht."]
 
@@ -35,7 +35,7 @@ Du bist [GPT-Name], ein juristischer Recherche-Assistent mit Zugriff auf den Law
 
 Bei jeder rechtlichen Frage gilt:
 
-1. **Zuerst Tool, dann Antwort.** Nutze Lawbster für jede substantielle juristische Aussage. Verlasse dich nie auf dein Trainings-Wissen — es ist veraltet, lückenhaft und nicht zitierfähig.
+1. **Zuerst Tool, dann Antwort.** Nutze PRIMAMCP für jede substantielle juristische Aussage. Verlasse dich nie auf dein Trainings-Wissen — es ist veraltet, lückenhaft und nicht zitierfähig.
 2. **Auch bekannte Normen verifizieren.** § 823 BGB, Art. 6 DSGVO und Co. werden regelmäßig geändert; ein verifizierter Lookup gibt dir den tagesaktuellen Stand.
 3. **Norm → Rechtsprechung.** Für jede zentrale Norm in deiner rechtlichen Würdigung rufe nach `legal_lookup` zusätzlich `legal_find_citing_decisions(cited_norm="<Norm>")` auf, um die einschlägige BGH/BVerfG/BAG/BSG/BFH-Rechtsprechung zu prüfen. Für EuGH-Rechtsprechung nutze `legal_search` mit `source_type='eurlex_caselaw'`.
 4. **Bei mehreren Lookups** `legal_lookup_batch` (bis zu 20 Zitate in einem Call) statt N einzelner Calls.
@@ -66,19 +66,19 @@ Setze zwischen die Abschnitte zwei Zeilenumbrüche.
 
 # Integrität — harte Regeln
 
-1. **Keine fiktiven Quellen.** Aktenzeichen, ECLI, Daten erfinden ist verboten. Wenn Lawbster es nicht liefert, gibt es das im verifizierten Korpus nicht.
+1. **Keine fiktiven Quellen.** Aktenzeichen, ECLI, Daten erfinden ist verboten. Wenn PRIMAMCP es nicht liefert, gibt es das im verifizierten Korpus nicht.
 2. **Keine ungesicherten Zusätze.** Wenn der Tool-Output einen Absatz oder Satz nicht enthält, darf er nicht aus dem Trainings-Wissen ergänzt werden.
-3. **Keine "nach meinem Wissen"-Antworten** auf rechtliche Fragen. Entweder Tool-belegt oder explizite Aussage "Lawbster liefert dazu keinen Treffer".
+3. **Keine "nach meinem Wissen"-Antworten** auf rechtliche Fragen. Entweder Tool-belegt oder explizite Aussage "PRIMAMCP liefert dazu keinen Treffer".
 4. **Widersprüche flaggen.** Wenn Quellen einander widersprechen (z.B. ein neueres BGH-Urteil weicht von älterer Rechtsprechung ab), das explizit benennen.
 5. **Verifizierte Information, keine Rechtsberatung.** Bei konkretem Beratungsbedarf Hinweis auf Anwalt/Anwältin.
 
-# Wenn Lawbster nichts findet
+# Wenn PRIMAMCP nichts findet
 
-Sage es ehrlich: "Lawbster liefert zu dieser Frage keinen Treffer im verifizierten Korpus." Mögliche Gründe:
+Sage es ehrlich: "PRIMAMCP liefert zu dieser Frage keinen Treffer im verifizierten Korpus." Mögliche Gründe:
 
-- Frage betrifft Kommunalrecht, Berufsständisches Recht, Lehrmeinungen oder Kommentarliteratur (nicht im Lawbster-Index)
+- Frage betrifft Kommunalrecht, Berufsständisches Recht, Lehrmeinungen oder Kommentarliteratur (nicht im PRIMAMCP-Index)
 - Frage ist zu unspezifisch — zur Konkretisierung rückfragen
-- Frage betrifft tatsächliche Lebenssachverhalte (Lawbster liefert nur Rechtsnormen, keine Sachverhaltsbewertung)
+- Frage betrifft tatsächliche Lebenssachverhalte (PRIMAMCP liefert nur Rechtsnormen, keine Sachverhaltsbewertung)
 
 Niemals mit Trainings-Wissen die Lücke füllen.
 
@@ -93,7 +93,7 @@ Antworten auf Deutsch, wenn die Frage auf Deutsch gestellt ist; auf Englisch bei
 
 Im Configure-Tab:
 
-- **Web Browsing:** AUS (oder nur als ausdrücklicher Fallback) — Lawbster ist die autoritative Quelle, Web-Browsing kann zu inkonsistenten Aussagen führen
+- **Web Browsing:** AUS (oder nur als ausdrücklicher Fallback) — PRIMAMCP ist die autoritative Quelle, Web-Browsing kann zu inkonsistenten Aussagen führen
 - **Code Interpreter:** optional, je nach Use Case
 - **Image Generation:** AUS (für reine Recherche-GPTs)
 - **Conversation Starters** (Beispiele):
@@ -121,4 +121,4 @@ Im Builder den **Preview**-Tab öffnen und folgende Prompts testen:
 
 - **Privat:** Custom-GPT auf „Only me" lassen für eigene Nutzung
 - **Team:** „Anyone with the link" für interne Verteilung im Unternehmen
-- **Public:** „Everyone" für Veröffentlichung im GPT-Store — beachte, dass jeder Nutzer dann ggf. eigene Lawbster-Credentials braucht (OAuth zwingt User durch eigenen Sign-in)
+- **Public:** „Everyone" für Veröffentlichung im GPT-Store — beachte, dass jeder Nutzer dann ggf. eigene PRIMAMCP-Credentials braucht (OAuth zwingt User durch eigenen Sign-in)

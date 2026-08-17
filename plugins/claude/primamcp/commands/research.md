@@ -1,16 +1,16 @@
 ---
-description: Strukturierte juristische Recherche mit Fußnoten-Zitaten via Lawbster.
+description: Strukturierte juristische Recherche mit Fußnoten-Zitaten via PRIMAMCP.
 argument-hint: <Frage> [jurisdiction=DE|EU|DE+EU] [depth=quick|thorough]
 ---
 
-# /lawbster:research
+# /primamcp:research
 
 Führt eine strukturierte Rechtsrecherche durch — mit Pflicht zur Tool-Nutzung, Fußnoten-Zitaten und sauberer Trennung von wörtlichem Zitat (Block-Quote) und eigener Subsumtion.
 
 ## Nutzung
 
 ```
-/lawbster:research <Frage> [jurisdiction=DE+EU] [depth=thorough]
+/primamcp:research <Frage> [jurisdiction=DE+EU] [depth=thorough]
 ```
 
 - **Frage**: natürlichsprachlich. Z. B. „Welche Pflichten hat ein Verantwortlicher bei einem Datenleck nach DSGVO?"
@@ -20,12 +20,12 @@ Führt eine strukturierte Rechtsrecherche durch — mit Pflicht zur Tool-Nutzung
 ## Beispiele
 
 ```
-/lawbster:research Voraussetzungen für eine Schmerzensgeldforderung nach § 253 BGB
-/lawbster:research Drittlandübermittlung personenbezogener Daten jurisdiction=EU
-/lawbster:research Widerrufsrecht bei Fernabsatzverträgen jurisdiction=DE+EU depth=thorough
+/primamcp:research Voraussetzungen für eine Schmerzensgeldforderung nach § 253 BGB
+/primamcp:research Drittlandübermittlung personenbezogener Daten jurisdiction=EU
+/primamcp:research Widerrufsrecht bei Fernabsatzverträgen jurisdiction=DE+EU depth=thorough
 ```
 
-## Workflow (was Lawbster im Hintergrund macht)
+## Workflow (was PRIMAMCP im Hintergrund macht)
 
 1. **Frage zerlegt** — relevante Rechtsdomäne identifiziert; bei Unsicherheit `legal://rechtsrahmen` konsultiert (Domain → Gesetze).
 2. **Suche** — `legal_search` mit natürlichsprachlicher Query; `source_type` passt zur `jurisdiction` (`gii` = DE-Bundesrecht, `eurlex` = EU, `eurlex_caselaw` = EuGH).
@@ -38,4 +38,4 @@ Führt eine strukturierte Rechtsrecherche durch — mit Pflicht zur Tool-Nutzung
 
 - **Keine fiktiven Quellen.** Wenn `legal_lookup` `found=false` liefert, mit `legal_search` als Fallback suchen — sonst „Fundstelle nicht auffindbar" sagen.
 - **Keine ungesicherten Aussagen.** Was nicht im Tool-Output steht, kommt nicht in die Antwort.
-- **Keine Rechtsberatung.** Lawbster liefert verifizierte Rechtsinformation, nicht Rechtsberatung im Sinne des RDG. Bei konkreter Beratung Hinweis auf Anwalt/Anwältin.
+- **Keine Rechtsberatung.** PRIMAMCP liefert verifizierte Rechtsinformation, nicht Rechtsberatung im Sinne des RDG. Bei konkreter Beratung Hinweis auf Anwalt/Anwältin.

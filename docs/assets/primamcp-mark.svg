@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-14 -18 960 136" role="img" aria-label="PRIMAMCP">
+  <!-- Produkt-Wortmarke, dunkler Grund. Variante 01 "Gewicht": PRIMA in 300, MCP in 800.
+       Gleiche Geometrie wie primamcp-logo.svg: Versalhoehe 100, Grundlinie y=100. -->
+  <g fill="#a5f4b2">
+    <polygon points="0,100 19.08,100 46,0 26.92,0"/>
+    <polygon points="47.3,100 66.39,100 93.3,0 74.22,0"/>
+  </g>
+  <text x="138" y="100" fill="#ffffff" font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+        font-size="137.5" letter-spacing="1.4"><tspan font-weight="300">PRIMA</tspan><tspan font-weight="800">MCP</tspan></text>
+</svg>

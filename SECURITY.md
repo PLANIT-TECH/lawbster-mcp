@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in Lawbster — either in the hosted service (`https://lawbster.planitprima.com`) or in the contents of this repository (npm wrapper package, client snippets) — please report it responsibly.
+If you discover a security vulnerability in PRIMAMCP — either in the hosted service (`https://mcp.planitprima.com`) or in the contents of this repository (npm wrapper package, client snippets) — please report it responsibly.
 
 **Do not open a public GitHub issue for security vulnerabilities.**
 
@@ -34,11 +34,11 @@ We will credit reporters in the changelog and (with consent) in a public securit
 
 **In scope:**
 
-- Vulnerabilities in the hosted Lawbster API (`https://lawbster.planitprima.com/mcp` and related endpoints)
+- Vulnerabilities in the hosted PRIMAMCP API (`https://mcp.planitprima.com/mcp` and related endpoints)
 - Authentication / authorization issues (API key handling, OAuth flow, JWT validation)
 - Quota / rate-limit bypass
 - Data leaks (cross-tenant access to indexed content metadata or quota counters)
-- Vulnerabilities in the npm wrapper package (`@planit-lawbster/lawbster-mcp`) — credential exfiltration, code injection in setup CLI, etc.
+- Vulnerabilities in the npm wrapper package (`@planit-tech/primamcp`) — credential exfiltration, code injection in setup CLI, etc.
 - Security issues in the rules / skills / prompts shipped from this repo (e.g. injection vectors when loaded by client editors)
 
 **Out of scope:**
@@ -60,4 +60,4 @@ _(none yet)_
 
 ---
 
-**Contact:** `support@planitprima.com` · **Website:** [lawbster.planitprima.com](https://lawbster.planitprima.com)
+**Contact:** `support@planitprima.com` · **Website:** [mcp.planitprima.com](https://mcp.planitprima.com)
