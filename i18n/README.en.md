@@ -92,7 +92,7 @@ npx -y @planit-tech/primamcp setup --client claude
 **Troubleshooting:**
 - *PRIMAMCP doesn't appear* → Validate JSON with `python -m json.tool < claude_desktop_config.json`. Common mistake: missing comma between multiple servers.
 - *401 Unauthorized* → Token prefix `sk-legal-` correct? Subscription active?
-- *429 rate limit* → Fair-use is 60 requests/minute per seat. Long research sessions can hit it — add a second seat or pause briefly.
+- *429 rate limit* → fair-use is 15–300 requests/minute per seat, depending on plan. Long research sessions can hit it — pause briefly, move to a larger plan or add a second seat.
 
 </details>
 
@@ -363,7 +363,7 @@ Pre-built snippets that teach your AI client **when** and **how** to use PRIMAMC
 - **No personal data** in normal operation — the index contains only public legal texts; tool-call payloads are not persisted
 - **API keys SHA-256-hashed** — plain text shown only once at creation
 - **Dual auth** — API key (`sk-legal-…`) for server-to-server, OAuth 2.1 with JWT for browser clients
-- **Per-seat quota** with fair-use limit (60 req/min)
+- **Per-seat quota** with fair-use limit (15–300 req/min depending on plan)
 - **Stripe** for payments under EU-US Data Privacy Framework (Art. 45 GDPR)
 
 → Binding terms in **[T&C](https://mcp.planitprima.com/agb)** and **[Privacy policy](https://mcp.planitprima.com/datenschutz)**.
@@ -372,7 +372,18 @@ Pre-built snippets that teach your AI client **when** and **how** to use PRIMAMC
 
 ## 💰 Pricing
 
-**One plan, simple billing.** **€19 per seat / month.** 14 days free, no credit card, cancel any time. Full legal corpus included.
+All prices are **gross** (VAT included), per seat and month. Annual billing saves 16 %. The full legal corpus is included in every tier.
+
+| Plan | Monthly | Yearly | Requests/month | Rate limit |
+|---|---|---|---|---|
+| **Free** | €0 | — | 150 (max. 15/day) | 15/min |
+| **Lite** | €6.90 | €69 | 750 | 30/min |
+| **Pro** | €19.90 | €199 | 5,000 | 60/min |
+| **Pro Plus** | €69.90 | €699 | 25,000 | 300/min |
+
+**Seat ladder** on Pro and Pro Plus: every seat from the 2nd, 6th and 11th onwards costs less — Pro €15.90 / €13.90 / €11.90, Pro Plus €55.90 / €48.90 / €41.90 per month. Billing is graduated: each seat is charged at its own tier's rate. On Lite every seat costs the same.
+
+The first 14 days run with Pro features, no credit card. After that you simply continue on the Free tier — no automatic switch into a paid subscription, cancel any time.
 
 → [mcp.planitprima.com/pricing](https://mcp.planitprima.com/pricing)
 

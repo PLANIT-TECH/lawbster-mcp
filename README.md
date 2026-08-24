@@ -92,7 +92,7 @@ Claude Desktop **vollständig beenden** (Quit, nicht nur Fenster schließen) und
 **Troubleshooting:**
 - *PRIMAMCP erscheint nicht* → JSON-Syntax prüfen mit `python -m json.tool < claude_desktop_config.json`. Häufiger Fehler: fehlendes Komma zwischen mehreren Servern.
 - *401 Unauthorized* → Token-Prefix `sk-legal-` korrekt? Subscription aktiv?
-- *429 Rate-Limit* → 60 Anfragen/Minute pro Seat. Lange Recherche-Sessions können das treffen — zweiten Seat zubuchen oder kurz pausieren.
+- *429 Rate-Limit* → 15–300 Anfragen/Minute pro Seat, je nach Tarif. Lange Recherche-Sessions können das treffen — kurz pausieren, größeren Tarif oder zweiten Seat zubuchen.
 
 </details>
 
@@ -363,7 +363,7 @@ Vorgefertigte Snippets, die deinem KI-Client beibringen, **wann** und **wie** er
 - **Keine personenbezogenen Daten** im Regelbetrieb — der Index enthält nur öffentliche Rechtstexte; Tool-Call-Inhalte werden nicht persistiert
 - **API-Keys SHA-256-gehasht** — Klartext nur einmal beim Erstellen sichtbar
 - **Dual-Auth** — API-Key (`sk-legal-…`) für Server-to-Server, OAuth 2.1 mit JWT für Web-Clients
-- **Pro-Seat-Quota** mit Fair-Use-Limit (60 Anfragen/min)
+- **Pro-Seat-Quota** mit Fair-Use-Limit (15–300 Anfragen/min je nach Tarif)
 - **Stripe für Zahlungsabwicklung** unter EU-US Data Privacy Framework (Art. 45 DSGVO)
 
 → Verbindliches in **[AGB](https://mcp.planitprima.com/agb)** und **[Datenschutzerklärung](https://mcp.planitprima.com/datenschutz)**.
@@ -372,7 +372,18 @@ Vorgefertigte Snippets, die deinem KI-Client beibringen, **wann** und **wie** er
 
 ## 💰 Pricing
 
-**Ein Plan, klare Abrechnung.** **19 € pro Seat / Monat.** 14 Tage kostenlos testen, keine Kreditkarte, jederzeit kündbar. Vollständiger Rechtskorpus inklusive.
+Alle Preise **brutto** (inkl. USt.), pro Seat und Monat. Jahresabrechnung spart 16 %. Vollständiger Rechtskorpus in jedem Tarif.
+
+| Tarif | Monatlich | Jährlich | Anfragen/Monat | Rate-Limit |
+|---|---|---|---|---|
+| **Free** | 0 € | — | 150 (max. 15/Tag) | 15/min |
+| **Lite** | 6,90 € | 69 € | 750 | 30/min |
+| **Pro** | 19,90 € | 199 € | 5.000 | 60/min |
+| **Pro Plus** | 69,90 € | 699 € | 25.000 | 300/min |
+
+**Sitzstaffel** auf Pro und Pro Plus: ab dem 2., 6. und 11. Seat wird jeder weitere günstiger — Pro 15,90 / 13,90 / 11,90 €, Pro Plus 55,90 / 48,90 / 41,90 € pro Monat. Gestaffelte Abrechnung: jeder Seat zum Satz seiner Stufe. Lite kostet jeden Seat gleich viel.
+
+Die ersten 14 Tage laufen mit Pro-Funktionen, ohne Kreditkarte. Danach geht es ohne Zutun im Free-Tarif weiter — kein automatischer Wechsel in ein kostenpflichtiges Abo, jederzeit kündbar.
 
 → [mcp.planitprima.com/pricing](https://mcp.planitprima.com/pricing)
 

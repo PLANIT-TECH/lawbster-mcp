@@ -35,7 +35,7 @@ PRIMAMCP liefert klar typisierte Fehler:
 - **Ungültiges Zitat-Format** in `legal_lookup` / `legal_lookup_batch` → klare Fehlermeldung mit Hinweis auf akzeptierte Formate
 - **Norm nicht im Index** → Tool gibt `{ "found": false, "citation": "..." }` zurück
 - **Quota erreicht** → HTTP 429 mit `Retry-After`
-- **Fair-Use-Limit (60 Anfragen/min)** → HTTP 429 — kurz pausieren und neu probieren
+- **Fair-Use-Limit (15–300 Anfragen/min je nach Tarif)** → HTTP 429 — kurz pausieren und neu probieren
 
 ---
 

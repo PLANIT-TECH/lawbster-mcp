@@ -48,7 +48,7 @@ Eine Person oder ein eigenständiger API-Key. Wenn ein API-Key einer Person zuge
 
 ### Wie funktioniert die 14-tägige Testphase?
 
-Anmeldung im Portal, PRIMAMCP ohne Kreditkarte testen — kein automatischer Übergang in einen kostenpflichtigen Plan. Wenn du nach 14 Tagen bleiben möchtest, schließt du aktiv ein Abonnement ab.
+Anmeldung im Portal, PRIMAMCP 14 Tage mit Pro-Funktionen und ohne Kreditkarte testen — kein automatischer Übergang in einen kostenpflichtigen Plan. Danach läuft der Account im Free-Tarif weiter (150 Anfragen/Monat, max. 15 pro Tag). Wenn du mehr brauchst, schließt du aktiv ein Abonnement ab.
 
 ### Kann ich jederzeit kündigen?
 
@@ -72,7 +72,7 @@ Index-Inhalte sind deutschsprachig (deutsches Bundesrecht, deutsche Fassung des 
 
 ### Gibt es ein Rate-Limit?
 
-Fair-Use: 60 Anfragen pro Minute pro Seat. Im normalen Betrieb erreichst du das nicht. Bei automatisierten Pipelines, die das Limit treffen: zweiten Seat zubuchen.
+Fair-Use pro Seat, je nach Tarif: Free 15, Lite 30, Pro 60, Pro Plus 300 Anfragen pro Minute. Im normalen Betrieb erreichst du das nicht. Bei automatisierten Pipelines, die das Limit treffen: größeren Tarif oder zweiten Seat zubuchen.
 
 ## Compliance & Sicherheit
 
@@ -102,13 +102,26 @@ Architektonisch: Der LLM-Anbieter (Claude, ChatGPT) ist die Schnittstelle zum Ma
 
 ### Was kostet PRIMAMCP?
 
-19 € pro Seat und Monat. Vollständige Coverage, unbegrenzte Anfragen pro Seat (Fair-Use 60/min), bevorzugter E-Mail-Support. 14 Tage kostenlos testen.
+Vier Tarife, alle Preise brutto pro Seat und Monat — Jahresabrechnung spart 16 %:
+
+| Tarif | Monatlich | Jährlich | Anfragen/Monat | Rate-Limit |
+|---|---|---|---|---|
+| Free | 0 € | — | 150 (max. 15/Tag) | 15/min |
+| Lite | 6,90 € | 69 € | 750 | 30/min |
+| Pro | 19,90 € | 199 € | 5.000 | 60/min |
+| Pro Plus | 69,90 € | 699 € | 25.000 | 300/min |
+
+Vollständige Coverage und bevorzugter E-Mail-Support in jedem kostenpflichtigen Tarif. Die ersten 14 Tage laufen mit Pro-Funktionen, ohne Kreditkarte.
 
 → [Pricing](https://mcp.planitprima.com/pricing)
 
+### Wird es bei mehreren Seats günstiger?
+
+Ja, auf Pro und Pro Plus greift eine Sitzstaffel: ab dem 2., 6. und 11. Seat wird jeder weitere günstiger — Pro 15,90 / 13,90 / 11,90 €, Pro Plus 55,90 / 48,90 / 41,90 € pro Monat. Abgerechnet wird gestaffelt, jeder Seat zum Satz seiner Stufe. Auf Lite kostet jeder Seat gleich viel.
+
 ### Gibt es einen Custom-Plan für viele Seats?
 
-Ab 50 Seats sprechen wir gern über einen Mengenrabatt und individuelle Vertragsbedingungen — `support@planitprima.com`.
+Ab 50 Seats sprechen wir gern über individuelle Vertragsbedingungen — `support@planitprima.com`.
 
 ### Bekomme ich eine Rechnung mit USt-Ausweis?
 
